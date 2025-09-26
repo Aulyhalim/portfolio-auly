@@ -9,7 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -1673,6 +1674,20 @@
             });
 
             // --- CONTACT FORM ---
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                background: '#1E293B',
+                color: '#FFFFFF',
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+
             const contactForm = document.getElementById('contact-form');
             const submitButton = contactForm.querySelector('button[type="submit"]');
             const originalButtonHTML = submitButton.innerHTML;
@@ -1680,19 +1695,12 @@
             contactForm.addEventListener('submit', function (e) {
                 e.preventDefault();
 
-                // Ubah tombol menjadi status loading
                 submitButton.disabled = true;
-                submitButton.innerHTML = `
-                    <span class="flex items-center justify-center space-x-2">
-                        <span>Sending...</span>
-                        <i class="fas fa-spinner fa-spin"></i>
-                    </span>`;
+                submitButton.innerHTML = `<span class="flex items-center justify-center space-x-2"><span>Sending...</span><i class="fas fa-spinner fa-spin"></i></span>`;
 
                 const formData = new FormData(contactForm);
                 const object = {};
-                formData.forEach((value, key) => {
-                    object[key] = value;
-                });
+                formData.forEach((value, key) => { object[key] = value; });
                 const json = JSON.stringify(object);
 
                 fetch('https://api.web3forms.com/submit', {
@@ -1706,24 +1714,33 @@
                 .then(async (response) => {
                     let jsonResponse = await response.json();
                     if (response.status == 200) {
-                        alert('Success! Your message has been sent successfully.');
+                        // 2. Gunakan Toast untuk notifikasi sukses
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Message sent successfully!'
+                        });
                     } else {
                         console.log(response);
-                        alert(`Error: ${jsonResponse.message}`);
+                        // 3. Gunakan Toast untuk notifikasi error
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Oops! Something went wrong.'
+                        });
                     }
                 })
                 .catch(error => {
                     console.log(error);
-                    alert('An error occurred. Please try again later.');
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Oops! Something went wrong.'
+                    });
                 })
                 .finally(() => {
-                    // Kembalikan tombol ke keadaan semula dan reset form
                     submitButton.disabled = false;
                     submitButton.innerHTML = originalButtonHTML;
                     contactForm.reset();
                 });
             });
-
             // --- TYPING ANIMATION FOR ROLE TEXT ---
             const roleText = document.getElementById('role-text');
             if(roleText) {
