@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Learnify App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Variabel Warna Utama */
+        :root {
+            --gradient-primary: linear-gradient(135deg, #D97706 0%, #F59E0B 50%, #FBBF24 100%);
+        }
+
+        body { font-family: 'Inter', sans-serif; background: #020617; color: white; }
+
+        /* Custom Scrollbar yang ditambahkan */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1E293B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: 4px;
+        }
+
+        /* Style asli halaman Anda */
+        .grid-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
+        .case-study-img { border-radius: 0.75rem; border: 1px solid #334155; transition: transform 0.3s; cursor: pointer; }
+        .case-study-img:hover { transform: scale(1.02); border-color: #D97706; }
+        .text-primary { color: #D97706; }
+        .border-primary { border-color: #D97706; }
+
+        /* CSS UNTUK MODAL INTERAKTIF */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); }
+        .modal.active { display: flex; align-items: center; justify-content: center; animation: slideUp 0.3s ease-out; }
+        .modal-content { max-width: 85%; max-height: 85%; border-radius: 12px; }
+        .modal-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(217, 119, 6, 0.7); color: white; border: none; cursor: pointer; font-size: 24px; border-radius: 50%; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+        .modal-nav:hover { background: rgba(217, 119, 6, 1); transform: translateY(-50%) scale(1.1); }
+        .modal-nav.prev { left: 20px; }
+        .modal-nav.next { right: 20px; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <a href="index.html#projects" class="inline-flex items-center text-primary hover:text-yellow-400 mb-8 transition-colors">
+            <i class="fas fa-arrow-left mr-2"></i>
+            Back to All Projects
+        </a>
+
+        <header class="text-center mb-16">
+            <span class="text-primary font-semibold">UI/UX Case Study</span>
+            <h1 class="text-4xl lg:text-6xl font-black my-4">Learnify Mobile App</h1>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">A study companion app with features like progress tracking, a calendar, and task reminders for a more organized learning experience.</p>
+        </header>
+
+        <div class="grid md:grid-cols-4 gap-8 mb-16 p-8 bg-slate-800/50 border border-slate-700 rounded-2xl items-center">
+            <div><h3 class="font-bold text-primary mb-2">My Role</h3><p>UI/UX Designer</p></div>
+            <div><h3 class="font-bold text-primary mb-2">Tools</h3><p>Figma, Whimsical</p></div>
+            <div><h3 class="font-bold text-primary mb-2">Duration</h3><p>4 Weeks</p></div>
+            <div>
+                <a href="https://bit.ly/learnifydesign" target="_blank" 
+                class="inline-flex items-center justify-center w-full px-4 py-3 bg-gray-800 hover:bg-gray-700 border border-gray-600 rounded-lg transition-colors">
+                    <i class="fab fa-figma mr-2"></i>
+                    View Figma Design
+                </a>
+            </div>
+        </div>
+        
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 border-l-4 border-primary pl-4">User Research & Journey Map</h2>
+            <p class="text-gray-400 mb-8">
+                Understanding the needs and challenges of target users to design an effective solution that addresses their problems, such as difficulty managing schedules and tracking task progress.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="flex flex-col gap-8">
+                    <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 flex-1">
+                        <h3 class="text-xl font-bold text-white mb-4">User Persona 1</h3>
+                        <div class="border-b border-slate-600 pb-4 mb-4"><h4 class="text-lg font-semibold text-primary">Nuqi Al-Farisyah</h4><p class="text-gray-400 text-sm">Senior High Student, 17 years old</p></div>
+                        <div><h5 class="font-semibold text-white mb-2">Needs:</h5><ul class="list-disc list-inside text-gray-400 text-sm space-y-1"><li>Needs task reminders.</li><li>Easy access to learning materials.</li></ul></div>
+                        <div class="mt-4"><h5 class="font-semibold text-white mb-2">Challenges:</h5><ul class="list-disc list-inside text-gray-400 text-sm space-y-1"><li>Often forgets task deadlines.</li><li>Feels overwhelmed by the number of assignments.</li></ul></div>
+                    </div>
+                    <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 flex-1">
+                        <h3 class="text-xl font-bold text-white mb-4">User Persona 2</h3>
+                        <div class="border-b border-slate-600 pb-4 mb-4"><h4 class="text-lg font-semibold text-primary">Tasya Putri Wulandari</h4><p class="text-gray-400 text-sm">College Student, 21 years old</p></div>
+                        <div><h5 class="font-semibold text-white mb-2">Needs:</h5><ul class="list-disc list-inside text-gray-400 text-sm space-y-1"><li>Managing schedules for classes, assignments, and campus organizations.</li></ul></div>
+                        <div class="mt-4"><h5 class="font-semibold text-white mb-2">Challenges:</h5><ul class="list-disc list-inside text-gray-400 text-sm space-y-1"><li>Difficulty tracking task progress and achievements.</li></ul></div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-8">
+                    <div><h3 class="text-xl font-bold text-white mb-4">User Journey Map 1</h3><img src="assets/img/learnify/user-journey-map-1.png" alt="User Journey Map 1" class="case-study-img" onclick="openModalWithGallery('journey-maps', 0)"></div>
+                    <div><h3 class="text-xl font-bold text-white mb-4">User Journey Map 2</h3><img src="assets/img/learnify/user-journey-map-2.png" alt="User Journey Map 2" class="case-study-img" onclick="openModalWithGallery('journey-maps', 1)"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 border-l-4 border-primary pl-4">Key Insights</h2>
+            <p class="text-gray-400 mb-8">
+                From the research, three core needs emerged that became the foundation for the app's features.
+            </p>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 text-center">
+                    <div class="text-3xl text-primary mb-4"><i class="fas fa-book-open"></i></div>
+                    <p class="text-gray-300">Students need an application that provides <strong>easy access to various learning materials</strong>.</p>
+                </div>
+                <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 text-center">
+                    <div class="text-3xl text-primary mb-4"><i class="fas fa-bell"></i></div>
+                    <p class="text-gray-300"><strong>Task and deadline reminders</strong> are crucial for helping students manage their time effectively.</p>
+                </div>
+                <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 text-center">
+                    <div class="text-3xl text-primary mb-4"><i class="fas fa-chart-line"></i></div>
+                    <p class="text-gray-300">Students want to <strong>track their progress and achievements</strong> to stay motivated.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 border-l-4 border-primary pl-4">Design Process (Ideation)</h2>
+            <p class="text-gray-400 mb-8">
+                A brainstorming process was conducted to generate feature ideas for Learnify. These ideas were then validated through discussions with potential users. Some of the initial concepts included:
+            </p>
+            <div class="bg-slate-800/50 p-8 rounded-lg border border-slate-700">
+                <ul class="list-disc list-inside text-gray-300 space-y-4">
+                    <li>
+                        <strong>Learning:</strong> Providing study materials, video lessons, and practice exercises.
+                    </li>
+                    <li>
+                        <strong>Tasks:</strong> Featuring deadline reminders, a monthly preview, and a feature to create new to-do lists.
+                    </li>
+                    <li>
+                        <strong>Calendar:</strong> A calendar with event reminders and the ability to add new events.
+                    </li>
+                    <li>
+                        <strong>Progress Tracker:</strong> Recording task progress, whether completed on time, late, in progress, or not finished.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 border-l-4 border-primary pl-4">Wireframes</h2>
+            <p class="text-gray-400 mb-8">The initial structure and layout of the application, designed to validate the user flow and map out the entire application's functionality before moving to the visual design phase.</p>
+            <div class="grid-gallery">
+                <img src="assets/img/learnify/wireframes/wireframe-1-frontpage.png" alt="Wireframe 1" class="case-study-img" onclick="openModalWithGallery('wireframes', 0)">
+                <img src="assets/img/learnify/wireframes/wireframe-2-login.png" alt="Wireframe 2" class="case-study-img" onclick="openModalWithGallery('wireframes', 1)">
+                <img src="assets/img/learnify/wireframes/wireframe-3-register.png" alt="Wireframe 3" class="case-study-img" onclick="openModalWithGallery('wireframes', 2)">
+                <img src="assets/img/learnify/wireframes/wireframe-4-opsimenu.png" alt="Wireframe 4" class="case-study-img" onclick="openModalWithGallery('wireframes', 3)">
+                <img src="assets/img/learnify/wireframes/wireframe-5-pengaturan.png" alt="Wireframe 5" class="case-study-img" onclick="openModalWithGallery('wireframes', 4)">
+                <img src="assets/img/learnify/wireframes/wireframe-6-beranda.png" alt="Wireframe 6" class="case-study-img" onclick="openModalWithGallery('wireframes', 5)">
+                <img src="assets/img/learnify/wireframes/wireframe-7-pembelajaran.png" alt="Wireframe 7" class="case-study-img" onclick="openModalWithGallery('wireframes', 6)">
+                <img src="assets/img/learnify/wireframes/wireframe-8-matapelajaran.png" alt="Wireframe 8" class="case-study-img" onclick="openModalWithGallery('wireframes', 7)">
+                <img src="assets/img/learnify/wireframes/wireframe-9-videopelajaran.png" alt="Wireframe 9" class="case-study-img" onclick="openModalWithGallery('wireframes', 8)">
+                <img src="assets/img/learnify/wireframes/wireframe-10-latihan.png" alt="Wireframe 10" class="case-study-img" onclick="openModalWithGallery('wireframes', 9)">
+                <img src="assets/img/learnify/wireframes/wireframe-11-kursusku.png" alt="Wireframe 11" class="case-study-img" onclick="openModalWithGallery('wireframes', 10)">
+                <img src="assets/img/learnify/wireframes/wireframe-12-tugas.png" alt="Wireframe 12" class="case-study-img" onclick="openModalWithGallery('wireframes', 11)">
+                <img src="assets/img/learnify/wireframes/wireframe-13-tambahtugas.png" alt="Wireframe 13" class="case-study-img" onclick="openModalWithGallery('wireframes', 12)">
+                <img src="assets/img/learnify/wireframes/wireframe-14-listtugas.png" alt="Wireframe 14" class="case-study-img" onclick="openModalWithGallery('wireframes', 13)">
+                <img src="assets/img/learnify/wireframes/wireframe-15-kalender.png" alt="Wireframe 15" class="case-study-img" onclick="openModalWithGallery('wireframes', 14)">
+                <img src="assets/img/learnify/wireframes/wireframe-16-tambah-acara.png" alt="Wireframe 16" class="case-study-img" onclick="openModalWithGallery('wireframes', 15)">
+                <img src="assets/img/learnify/wireframes/wireframe-17-palacak.png" alt="Wireframe 17" class="case-study-img" onclick="openModalWithGallery('wireframes', 16)">
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 border-l-4 border-primary pl-4">Design System</h2>
+            <p class="text-gray-400 mb-8">A guide containing consistent standards for visual elements like color palettes and UI components, to ensure coherence throughout the application.</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <img src="assets/img/learnify/system-color.png" alt="Color System" class="case-study-img" onclick="openModalWithGallery('design-system', 0)">
+                <img src="assets/img/learnify/system-design.png" alt="Design System Components" class="case-study-img" onclick="openModalWithGallery('design-system', 1)">
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-3xl font-bold mb-6 border-l-4 border-primary pl-4">High-Fidelity</h2>
+            <p class="text-gray-400 mb-8">The final, visually polished design of the application, ready for handoff to the development team, covering all user flows and visual components.</p>
+            <div class="grid-gallery">
+                <img src="assets/img/learnify/hifi/hifi-1-frontpage.png" alt="High Fidelity 1" class="case-study-img" onclick="openModalWithGallery('hifi', 0)">
+                <img src="assets/img/learnify/hifi/hifi-2-login.png" alt="High Fidelity 2" class="case-study-img" onclick="openModalWithGallery('hifi', 1)">
+                <img src="assets/img/learnify/hifi/hifi-3-login2.png" alt="High Fidelity 3" class="case-study-img" onclick="openModalWithGallery('hifi', 2)">
+                <img src="assets/img/learnify/hifi/hifi-4-register.png" alt="High Fidelity 4" class="case-study-img" onclick="openModalWithGallery('hifi', 3)">
+                <img src="assets/img/learnify/hifi/hifi-5-beranda.png" alt="High Fidelity 5" class="case-study-img" onclick="openModalWithGallery('hifi', 4)">
+                <img src="assets/img/learnify/hifi/hifi-6-menuopsi.png" alt="High Fidelity 6" class="case-study-img" onclick="openModalWithGallery('hifi', 5)">
+                <img src="assets/img/learnify/hifi/hifi-7-main-pengaturan.png" alt="High Fidelity 7" class="case-study-img" onclick="openModalWithGallery('hifi', 6)">
+                <img src="assets/img/learnify/hifi/hifi-8-pengaturan.png" alt="High Fidelity 8" class="case-study-img" onclick="openModalWithGallery('hifi', 7)">
+                <img src="assets/img/learnify/hifi/hifi-9-pembelajaran.png" alt="High Fidelity 9" class="case-study-img" onclick="openModalWithGallery('hifi', 8)">
+                <img src="assets/img/learnify/hifi/hifi-10-matapelajaran.png" alt="High Fidelity 10" class="case-study-img" onclick="openModalWithGallery('hifi', 9)">
+                <img src="assets/img/learnify/hifi/hifi-11-video-pembelajaran.png" alt="High Fidelity 11" class="case-study-img" onclick="openModalWithGallery('hifi', 10)">
+                <img src="assets/img/learnify/hifi/hifi-12-latihan.png" alt="High Fidelity 12" class="case-study-img" onclick="openModalWithGallery('hifi', 11)">
+                <img src="assets/img/learnify/hifi/hifi-13-kursusku.png" alt="High Fidelity 13" class="case-study-img" onclick="openModalWithGallery('hifi', 12)">
+                <img src="assets/img/learnify/hifi/hifi-14-tugasku.png" alt="High Fidelity 14" class="case-study-img" onclick="openModalWithGallery('hifi', 13)">
+                <img src="assets/img/learnify/hifi/hifi-15-create.png" alt="High Fidelity 15" class="case-study-img" onclick="openModalWithGallery('hifi', 14)">
+                <img src="assets/img/learnify/hifi/hifi-16-penacapaian.png" alt="High Fidelity 16" class="case-study-img" onclick="openModalWithGallery('hifi', 15)">
+                <img src="assets/img/learnify/hifi/hifi-17-tambah.png" alt="High Fidelity 17" class="case-study-img" onclick="openModalWithGallery('hifi', 16)">
+                <img src="assets/img/learnify/hifi/hifi-18-kalender.png" alt="High Fidelity 18" class="case-study-img" onclick="openModalWithGallery('hifi', 17)">
+            </div>
+        </section>
+    </div>
+
+    <div id="imageModal" class="modal">
+        <div class="relative w-full h-full flex items-center justify-center p-4">
+            <img class="modal-content max-w-full max-h-full object-contain" id="modalImage" alt="Detail Gambar Proyek">
+            <button class="modal-nav prev" id="prevBtn" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+            <button class="modal-nav next" id="nextBtn" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+            <button id="closeModal" class="absolute top-6 right-6 w-14 h-14 bg-black/50 text-white rounded-full flex items-center justify-center hover:bg-black/70 text-xl" aria-label="Close gallery"><i class="fas fa-times"></i></button>
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/50 px-4 py-2 rounded-full"><span id="imageTitle" class="text-white text-sm"></span></div>
+        </div>
+    </div>
+
+    <script>
+        const galleries = {
+            'journey-maps': [
+                { src: 'assets/img/learnify/user-journey-map-1.png', title: 'User Journey Map 1' },
+                { src: 'assets/img/learnify/user-journey-map-2.png', title: 'User Journey Map 2' }
+            ],
+            'wireframes': [
+                { src: 'assets/img/learnify/wireframes/wireframe-1-frontpage.png', title: 'Wireframe: Front Page' },
+                { src: 'assets/img/learnify/wireframes/wireframe-2-login.png', title: 'Wireframe: Login' },
+                { src: 'assets/img/learnify/wireframes/wireframe-3-register.png', title: 'Wireframe: Register' },
+                { src: 'assets/img/learnify/wireframes/wireframe-4-opsimenu.png', title: 'Wireframe: Opsi Menu' },
+                { src: 'assets/img/learnify/wireframes/wireframe-5-pengaturan.png', title: 'Wireframe: Pengaturan' },
+                { src: 'assets/img/learnify/wireframes/wireframe-6-beranda.png', title: 'Wireframe: Beranda' },
+                { src: 'assets/img/learnify/wireframes/wireframe-7-pembelajaran.png', title: 'Wireframe: Pembelajaran' },
+                { src: 'assets/img/learnify/wireframes/wireframe-8-matapelajaran.png', title: 'Wireframe: Mata Pelajaran' },
+                { src: 'assets/img/learnify/wireframes/wireframe-9-videopelajaran.png', title: 'Wireframe: Video Pelajaran' },
+                { src: 'assets/img/learnify/wireframes/wireframe-10-latihan.png', title: 'Wireframe: Latihan' },
+                { src: 'assets/img/learnify/wireframes/wireframe-11-kursusku.png', title: 'Wireframe: Kursusku' },
+                { src: 'assets/img/learnify/wireframes/wireframe-12-tugas.png', title: 'Wireframe: Tugas' },
+                { src: 'assets/img/learnify/wireframes/wireframe-13-tambahtugas.png', title: 'Wireframe: Tambah Tugas' },
+                { src: 'assets/img/learnify/wireframes/wireframe-14-listtugas.png', title: 'Wireframe: List Tugas' },
+                { src: 'assets/img/learnify/wireframes/wireframe-15-kalender.png', title: 'Wireframe: Kalender' },
+                { src: 'assets/img/learnify/wireframes/wireframe-16-tambah-acara.png', title: 'Wireframe: Tambah Acara' },
+                { src: 'assets/img/learnify/wireframes/wireframe-17-palacak.png', title: 'Wireframe: Pelacak' }
+            ],
+            'design-system': [
+                { src: 'assets/img/learnify/system-color.png', title: 'Design System: Colors' },
+                { src: 'assets/img/learnify/system-design.png', title: 'Design System: Components' }
+            ],
+            'hifi': [
+                { src: 'assets/img/learnify/hifi/hifi-1-frontpage.png', title: 'High-Fidelity: Front Page' },
+                { src: 'assets/img/learnify/hifi/hifi-2-login.png', title: 'High-Fidelity: Login' },
+                { src: 'assets/img/learnify/hifi/hifi-3-login2.png', title: 'High-Fidelity: Login 2' },
+                { src: 'assets/img/learnify/hifi/hifi-4-register.png', title: 'High-Fidelity: Register' },
+                { src: 'assets/img/learnify/hifi/hifi-5-beranda.png', title: 'High-Fidelity: Beranda' },
+                { src: 'assets/img/learnify/hifi/hifi-6-menuopsi.png', title: 'High-Fidelity: Opsi Menu' },
+                { src: 'assets/img/learnify/hifi/hifi-7-main-pengaturan.png', title: 'High-Fidelity: Pengaturan Utama' },
+                { src: 'assets/img/learnify/hifi/hifi-8-pengaturan.png', title: 'High-Fidelity: Pengaturan Akun' },
+                { src: 'assets/img/learnify/hifi/hifi-9-pembelajaran.png', title: 'High-Fidelity: Pembelajaran' },
+                { src: 'assets/img/learnify/hifi/hifi-10-matapelajaran.png', title: 'High-Fidelity: Mata Pelajaran' },
+                { src: 'assets/img/learnify/hifi/hifi-11-video-pembelajaran.png', title: 'High-Fidelity: Video Pembelajaran' },
+                { src: 'assets/img/learnify/hifi/hifi-12-latihan.png', title: 'High-Fidelity: Latihan' },
+                { src: 'assets/img/learnify/hifi/hifi-13-kursusku.png', title: 'High-Fidelity: Kursusku' },
+                { src: 'assets/img/learnify/hifi/hifi-14-tugasku.png', title: 'High-Fidelity: Tugasku' },
+                { src: 'assets/img/learnify/hifi/hifi-15-create.png', title: 'High-Fidelity: Create Task' },
+                { src: 'assets/img/learnify/hifi/hifi-16-penacapaian.png', title: 'High-Fidelity: Pencapaian' },
+                { src: 'assets/img/learnify/hifi/hifi-17-tambah.png', title: 'High-Fidelity: Tambah Acara' },
+                { src: 'assets/img/learnify/hifi/hifi-18-kalender.png', title: 'High-Fidelity: Kalender' }
+            ]
+        };
+
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('imageTitle');
+        const closeModalBtn = document.getElementById('closeModal');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentGallery = []; 
+        let currentIndex = 0;
+
+        function openModalWithGallery(galleryKey, index) {
+            currentGallery = galleries[galleryKey];
+            currentIndex = index;
+            updateModalContent();
+            modal.classList.remove('hidden');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function updateModalContent() {
+            if (currentGallery.length > 0) {
+                modalImage.src = currentGallery[currentIndex].src;
+                modalTitle.textContent = `${currentIndex + 1} / ${currentGallery.length} - ${currentGallery[currentIndex].title}`;
+            }
+        }
+        
+        function closeModal() {
+            modal.classList.remove('active');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+            document.body.style.overflow = 'auto';
+        }
+        
+        closeModalBtn.onclick = closeModal;
+        modal.onclick = (e) => {
+            if (e.target.classList.contains('modal')) {
+                closeModal();
+            }
+        };
+        prevBtn.onclick = () => { currentIndex = (currentIndex > 0) ? currentIndex - 1 : currentGallery.length - 1; updateModalContent(); };
+        nextBtn.onclick = () => { currentIndex = (currentIndex < currentGallery.length - 1) ? currentIndex + 1 : 0; updateModalContent(); };
+        
+        document.addEventListener('keydown', (e) => { 
+            if (modal.classList.contains('active')) {
+                if (e.key === 'Escape') closeModal(); 
+                if (e.key === 'ArrowLeft') prevBtn.click(); 
+                if (e.key === 'ArrowRight') nextBtn.click();
+            }
+        });
+    </script>
+
+</body>
+</html>

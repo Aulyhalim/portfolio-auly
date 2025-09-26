@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio-Auly</title>
+    <meta name="description" content="UI/UX Designer and Full Stack Developer specializing in React.js, Python, and modern web technologies. Final year student at President University.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#D97706',
+                        'primary-dark': '#92400E',
+                        'primary-light': '#FED7AA',
+                        'accent': '#10B981',
+                        'dark': '#0F172A',
+                        'darker': '#020617'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'slide-in-right': 'slideInRight 0.8s ease-out',
+                        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+                        'rotate-slow': 'rotateSlow 20s linear infinite',
+                        'scale-pulse': 'scalePulse 2s ease-in-out infinite',
+                        'marquee': 'marquee 30s linear infinite',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'bounce-subtle': 'bounceSubtle 2s ease-in-out infinite'
+                    },
+                    backdropBlur: {
+                        'xs': '2px',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --gradient-primary: linear-gradient(135deg, #D97706 0%, #F59E0B 50%, #FBBF24 100%);
+            --gradient-secondary: linear-gradient(135deg, #10B981 0%, #059669 50%, #047857 100%);
+            --gradient-dark: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
+            --shadow-glow: 0 0 20px rgba(217, 119, 6, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: #020617;
+            color: white;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1E293B;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: 4px;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-dark {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Enhanced Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 5px rgba(217, 119, 6, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(217, 119, 6, 0.8), 0 0 30px rgba(217, 119, 6, 0.6); }
+        }
+
+        @keyframes rotateSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes scalePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        @keyframes bounceSubtle {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Enhanced Project Cards */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.6s ease-out forwards;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-card:nth-child(5) { animation-delay: 0.5s; }
+        .project-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(217, 119, 6, 0.3);
+        }
+
+        .project-preview {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.9) 0%, rgba(16, 185, 129, 0.9) 100%);
+            opacity: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        
+        .project-card:hover .project-preview {
+            opacity: 1;
+        }
+
+        /* Enhanced Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-grid.grid-cols-3 {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05) rotateY(5deg);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-grid.grid-cols-3 .gallery-item {
+            border-radius: 8px;
+        }
+
+        .gallery-grid.grid-cols-3 .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Interactive Elements */
+        .interactive-bg {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(217, 119, 6, 0.1), transparent);
+            animation: rotateSlow 20s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .interactive-bg:hover::before {
+            opacity: 1;
+        }
+
+        /* Enhanced Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(217, 119, 6, 0.8);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 24px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-nav:hover {
+            background: rgba(217, 119, 6, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .modal-nav.prev { left: 20px; }
+        .modal-nav.next { right: 20px; }
+        
+        /* Project Categories */
+        .project-category {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem 0;
+            border-bottom: 2px solid rgba(217, 119, 6, 0.2);
+        }
+
+        .category-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        /* Project Filter Styles */
+        .filter-btn.active {
+            background: linear-gradient(135deg, #D97706 0%, #F59E0B 100%);
+            color: white;
+        }
+
+        .project-category[style*="display: none"] {
+            display: none !important;
+        }
+
+        /* Skill Progress */
+        .skill-progress {
+            width: 0%;
+            transition: width 2s ease-out;
+            background: var(--gradient-primary);
+        }
+
+        .skill-progress.animate {
+            width: var(--progress);
+        }
+        
+        /* Custom Button Styles */
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(217, 119, 6, 0.4);
+        }
+
+         .btn-gradient {
+            background: var(--gradient-primary);
+            transition: all 0.3s ease;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(217, 119, 6, 0.4);
+        }
+
+        /* Enhanced Tooltips */
+        .tooltip {
+            position: relative;
+        }
+        
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            margin-bottom: 8px;
+        }
+
+        .tooltip:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-5px);
+        }
+
+        /* Enhanced Cards */
+        .enhanced-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enhanced-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .enhanced-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .enhanced-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -15px rgba(217, 119, 6, 0.2);
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .gallery-grid.grid-cols-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .modal-nav {
+                display: none;
+            }
+            .project-card:hover {
+                transform: none;
+            }
+            .gallery-item:hover {
+                transform: scale(1.02);
+            }
+            .project-category .grid {
+                grid-template-columns: 1fr;
+            }
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .category-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Form Styles */
+        .form-input {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: white !important;
+        }
+
+        .form-input:focus {
+            outline: none !important;
+            box-shadow: 0 0 0 2px #D97706 !important;
+            border-color: transparent !important;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.4) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="fixed top-0 w-full glass-dark z-40 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-black">
+                    <span class="bg-gradient-to-r from-primary to-yellow-400 bg-clip-text text-transparent">Auly</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-primary transition-all duration-300 relative group">Home<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-primary transition-all duration-300 relative group">About<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="#experience" class="nav-link text-gray-300 hover:text-primary transition-all duration-300 relative group">Experience<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="#services" class="nav-link text-gray-300 hover:text-primary transition-all duration-300 relative group">Services<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-primary transition-all duration-300 relative group">Projects<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="#achievements" class="nav-link text-gray-300 hover:text-primary transition-all duration-300 relative group">Achievements<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="#certifications" class="nav-link text-gray-300 hover:text-primary transition-all duration-300 relative group">Certifications<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span></a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-primary transition-all duration-300 relative group">Contact<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span></a>
+                </div>
+                <button class="md:hidden p-2 text-white" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="fixed inset-0 glass-dark z-30 hidden" id="mobile-menu">
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="#home" class="text-2xl text-white hover:text-primary transition-colors mobile-nav-link">Home</a>
+            <a href="#about" class="text-2xl text-white hover:text-primary transition-colors mobile-nav-link">About</a>
+            <a href="#experience" class="text-2xl text-white hover:text-primary transition-colors mobile-nav-link">Experience</a>
+            <a href="#services" class="text-2xl text-white hover:text-primary transition-colors mobile-nav-link">Services</a>
+            <a href="#projects" class="text-2xl text-white hover:text-primary transition-colors mobile-nav-link">Projects</a>
+            <a href="#achievements" class="text-2xl text-white hover:text-primary transition-colors mobile-nav-link">Achievements</a>
+            <a href="#certifications" class="text-2xl text-white hover:text-primary transition-colors mobile-nav-link">Certifications</a>
+            <a href="#contact" class="text-2xl text-white hover:text-primary transition-colors mobile-nav-link">Contact</a>
+        </div>
+    </div>
+
+    <section id="home" class="min-h-screen bg-gradient-to-br from-dark via-slate-800 to-slate-900 relative overflow-hidden flex items-center">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute top-40 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
+            <div class="absolute bottom-20 left-1/3 w-80 h-80 bg-yellow-400/10 rounded-full blur-3xl animate-float" style="animation-delay: 4s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8 animate-fade-in-up">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-3 h-3 bg-accent rounded-full animate-pulse-glow"></div>
+                        <span class="text-accent font-medium text-lg">Available for hire</span>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <h1 class="text-5xl lg:text-7xl font-black text-white leading-tight">
+                            Hi, I'm <br>
+                            <span class="bg-gradient-to-r from-primary via-yellow-400 to-accent bg-clip-text text-transparent">
+                                Nurul Aulia Halim
+                            </span>
+                        </h1>
+                        
+                        <div class="space-y-4">
+                            <h2 class="text-2xl lg:text-3xl font-bold text-gray-300 h-10">
+                                <span id="role-text" class="text-primary"></span>
+                            </h2>
+                            <p class="text-lg text-gray-400 max-w-xl leading-relaxed">
+                                Final year Informatics student at President University. I craft exceptional digital experiences through innovative UI/UX design and full-stack development, specializing in React.js, Python, and AI integration.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="text-3xl lg:text-4xl font-black text-primary" id="projects-count">18</div>
+                            <div class="text-sm text-gray-400">Projects</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl lg:text-4xl font-black text-accent" id="experience-count">1</div>
+                            <div class="text-sm text-gray-400">Years Exp</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl lg:text-4xl font-black text-yellow-400" id="awards-count">2</div>
+                            <div class="text-sm text-gray-400">Awards</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#projects" class="group inline-flex items-center space-x-2 bg-gradient-to-r from-primary to-yellow-400 text-white px-8 py-4 rounded-2xl font-bold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl">
+                            <span>View My Work</span>
+                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#contact" class="inline-flex items-center space-x-2 border-2 border-primary text-primary px-8 py-4 rounded-2xl font-bold hover:bg-primary hover:text-white transition-all duration-300">
+                            <span>Get In Touch</span>
+                            <i class="fas fa-comment-dots"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="flex items-center space-x-6 pt-4">
+                        <span class="text-gray-400">Follow me:</span>
+                        <div class="flex space-x-4">
+                            <a href="https://linkedin.com/in/aulyh" target="_blank" class="tooltip w-12 h-12 glass rounded-full flex items-center justify-center text-white hover:text-primary hover:scale-110 transition-all duration-300" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in text-lg"></i></a>
+                            <a href="https://github.com/aulyah" target="_blank" class="tooltip w-12 h-12 glass rounded-full flex items-center justify-center text-white hover:text-primary hover:scale-110 transition-all duration-300" data-tooltip="GitHub"><i class="fab fa-github text-lg"></i></a>
+                            <a href="https://instagram.com/aulyh_" target="_blank" class="tooltip w-12 h-12 glass rounded-full flex items-center justify-center text-white hover:text-primary hover:scale-110 transition-all duration-300" data-tooltip="Instagram"><i class="fab fa-instagram text-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center lg:justify-end relative animate-slide-in-right">
+                    <div class="relative group">
+                        <div class="absolute -top-8 -left-8 glass p-3 rounded-xl animate-float"><i class="fab fa-figma text-2xl text-purple-400"></i></div>
+                        <div class="absolute top-1/4 -right-12 glass p-3 rounded-xl animate-float" style="animation-delay: 2s;"><i class="fab fa-react text-2xl text-cyan-400"></i></div>
+                        <div class="absolute -bottom-4 -left-12 glass p-3 rounded-xl animate-float" style="animation-delay: 4s;"><i class="fab fa-python text-2xl text-yellow-400"></i></div>
+                        
+                        <div class="relative">
+                            <div class="w-80 h-96 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl p-8 glass hover:scale-105 transition-all duration-500 group-hover:shadow-2xl">
+                                <div class="w-full h-full rounded-2xl overflow-hidden">
+                                    <img src="assets/img/photo diri.jpg" alt="Foto Profil Nurul Aulia Halim" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            
+                            <div class="absolute -bottom-8 -right-8 bg-gray-900 text-green-400 p-4 rounded-xl font-mono text-sm shadow-2xl glass-dark rotate-3 hover:rotate-6 transition-transform duration-300">
+                                <div class="flex space-x-2 mb-2">
+                                    <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                </div>
+                                <div class="space-y-1">
+                                    <div>const <span class="text-cyan-400">dev</span> = {</div>
+                                    <div>&nbsp;&nbsp;name: <span class="text-yellow-300">'Auly'</span>,</div>
+                                    <div>&nbsp;&nbsp;passion: <span class="text-yellow-300">'ui/ux,web dev'</span>,</div>
+                                    <div>&nbsp;&nbsp;matcha: <span class="text-yellow-300">'∞'</span></div>
+                                    <div>}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-subtle">
+            <div class="flex flex-col items-center space-y-2 text-white/60">
+                <span class="text-sm">Scroll to explore</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-gradient-to-r from-dark to-slate-800 border-y border-gray-700 overflow-hidden">
+        <div class="flex animate-marquee">
+            <div class="flex space-x-16 text-2xl lg:text-3xl font-black text-gray-600 whitespace-nowrap">
+                <span>UI/UX DESIGN</span><span>•</span>
+                <span>REACT.JS</span><span>•</span>
+                <span>PYTHON</span><span>•</span>
+                <span>FIGMA</span><span>•</span>
+                <span>JAVASCRIPT</span><span>•</span>
+                <span>TAILWIND CSS</span><span>•</span>
+                <span>AI INTEGRATION</span><span>•</span>
+                <span>MYSQL</span><span>•</span>
+                <span>NODE.JS</span><span>•</span>
+                <span>NEXT.JS</span><span>•</span>
+                <span>UI/UX DESIGN</span><span>•</span>
+                <span>REACT.JS</span><span>•</span>
+                <span>PYTHON</span><span>•</span>
+                <span>FIGMA</span><span>•</span>
+                <span>JAVASCRIPT</span><span>•</span>
+                <span>TAILWIND CSS</span><span>•</span>
+                <span>AI INTEGRATION</span><span>•</span>
+                <span>MYSQL</span><span>•</span>
+                <span>NODE.JS</span><span>•</span>
+                <span>NEXT.JS</span><span>•</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-gradient-to-br from-darker via-dark to-slate-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">About Me</span>
+                <h2 class="text-4xl lg:text-6xl font-black text-white mb-6">Get to know me <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">better</span></h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Passionate about creating digital experiences that make a difference</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+                <div class="space-y-8">
+                    <div class="space-y-6">
+                        <h3 class="text-3xl lg:text-4xl font-bold text-white">Hello! I'm a <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Creative Designer & Developer</span></h3>
+                        <p class="text-lg text-gray-400 leading-relaxed">As a final year Informatics student at President University, I specialize in UI/UX design and full-stack web development. My journey combines design thinking with technical expertise to deliver solutions that users love.</p>
+                        <p class="text-lg text-gray-400 leading-relaxed">I believe great design is not just about how it looks, but how it works. Every project I undertake focuses on creating meaningful connections between users and technology through intuitive interfaces and robust functionality.</p>
+                        <div class="mt-6 pt-6 border-t border-slate-700">
+                            <p class="text-lg text-gray-300 leading-relaxed font-semibold">I am driven by a passion for leveraging technology to solve human-centered problems and am currently seeking opportunities to contribute to innovative teams and grow my expertise in building AI-driven user experiences.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <h4 class="text-2xl font-bold text-white">Technical Expertise</h4>
+                        <div class="space-y-4">
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2"><span class="font-semibold text-gray-300">UI/UX Design</span><span class="text-primary font-bold">90%</span></div>
+                                <div class="w-full bg-gray-700 rounded-full h-3"><div class="skill-progress h-3 rounded-full" style="--progress: 90%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2"><span class="font-semibold text-gray-300">Frontend Development</span><span class="text-primary font-bold">85%</span></div>
+                                <div class="w-full bg-gray-700 rounded-full h-3"><div class="skill-progress h-3 rounded-full" style="--progress: 85%"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2"><span class="font-semibold text-gray-300">Backend Development</span><span class="text-primary font-bold">80%</span></div>
+                                <div class="w-full bg-gray-700 rounded-full h-3"><div class="skill-progress h-3 rounded-full" style="--progress: 80%"></div></div>
+                            </div>
+                             <div class="skill-item">
+                                <div class="flex justify-between mb-2"><span class="font-semibold text-gray-300">AI Integration</span><span class="text-primary font-bold">75%</span></div>
+                                <div class="w-full bg-gray-700 rounded-full h-3"><div class="skill-progress h-3 rounded-full" style="--progress: 75%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="enhanced-card interactive-bg hover:scale-105 transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 text-white rounded-2xl flex items-center justify-center mb-6"><i class="fas fa-palette text-2xl"></i></div>
+                        <h4 class="text-xl font-bold text-white mb-3">UI/UX Design</h4>
+                        <p class="text-gray-400 text-sm mb-4">User-centered design with modern tools</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-purple-500/10 text-purple-400 rounded text-xs font-medium">Figma</span>
+                            <span class="px-2 py-1 bg-purple-500/10 text-purple-400 rounded text-xs font-medium">Prototyping</span>
+                        </div>
+                    </div>
+                    <div class="enhanced-card interactive-bg hover:scale-105 transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 text-white rounded-2xl flex items-center justify-center mb-6"><i class="fas fa-code text-2xl"></i></div>
+                        <h4 class="text-xl font-bold text-white mb-3">Web Development</h4>
+                        <p class="text-gray-400 text-sm mb-4">Full-stack solutions with modern frameworks</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-blue-500/10 text-blue-400 rounded text-xs font-medium">React</span>
+                            <span class="px-2 py-1 bg-blue-500/10 text-blue-400 rounded text-xs font-medium">Python</span>
+                        </div>
+                    </div>
+                    <div class="enhanced-card interactive-bg hover:scale-105 transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 text-white rounded-2xl flex items-center justify-center mb-6"><i class="fas fa-robot text-2xl"></i></div>
+                        <h4 class="text-xl font-bold text-white mb-3">AI Integration</h4>
+                        <p class="text-gray-400 text-sm mb-4">Smart solutions with AI technologies</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-green-500/10 text-green-400 rounded text-xs font-medium">Gemini</span>
+                            <span class="px-2 py-1 bg-green-500/10 text-green-400 rounded text-xs font-medium">OCR</span>
+                        </div>
+                    </div>
+                    <div class="enhanced-card interactive-bg hover:scale-105 transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 text-white rounded-2xl flex items-center justify-center mb-6"><i class="fas fa-users text-2xl"></i></div>
+                        <h4 class="text-xl font-bold text-white mb-3">Leadership</h4>
+                        <p class="text-gray-400 text-sm mb-4">Team management and project coordination</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-orange-500/10 text-orange-400 rounded text-xs font-medium">Agile</span>
+                            <span class="px-2 py-1 bg-orange-500/10 text-orange-400 rounded text-xs font-medium">Teamwork</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-gradient-to-br from-dark via-slate-800 to-slate-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Services</span>
+                <h2 class="text-4xl lg:text-6xl font-black text-white mb-6">What I Can Do <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">For You</span></h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Comprehensive digital solutions tailored to your needs</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="group enhanced-card interactive-bg hover:scale-105 transition-all duration-500">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 text-white rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"><i class="fas fa-palette text-2xl"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">UI/UX Design</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">User-centered design solutions that balance aesthetics with functionality. From research to interactive prototypes.</p>
+                </div>
+                
+                <div class="group enhanced-card interactive-bg hover:scale-105 transition-all duration-500">
+                    <div class="w-16 h-16 bg-gradient-to-br from-primary to-yellow-400 text-white rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"><i class="fas fa-code text-2xl"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors">Web Development</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Full-stack web applications built with modern technologies. From concept to deployment, creating scalable solutions.</p>
+                </div>
+                
+                <div class="group enhanced-card interactive-bg hover:scale-105 transition-all duration-500">
+                    <div class="w-16 h-16 bg-gradient-to-br from-accent to-green-600 text-white rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"><i class="fas fa-robot text-2xl"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-accent transition-colors">AI Integration</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Smart solutions with AI technologies that enhance user experience and automate complex processes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 bg-gradient-to-br from-darker via-dark to-slate-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">My Projects</span>
+                <h2 class="text-4xl lg:text-6xl font-black text-white mb-6">Featured <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Projects</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Discover my journey through innovative digital solutions and creative designs</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-btn active px-6 py-3 glass-dark rounded-xl text-white font-medium transition-all duration-300 hover:bg-primary/20" data-filter="all">All Projects</button>
+                <button class="filter-btn px-6 py-3 glass-dark rounded-xl text-white font-medium transition-all duration-300 hover:bg-primary/20" data-filter="web-development">Web Development</button>
+                <button class="filter-btn px-6 py-3 glass-dark rounded-xl text-white font-medium transition-all duration-300 hover:bg-primary/20" data-filter="ui-ux">UI/UX Design</button>
+                <button class="filter-btn px-6 py-3 glass-dark rounded-xl text-white font-medium transition-all duration-300 hover:bg-primary/20" data-filter="mobile-app">Mobile Apps</button>
+                <button class="filter-btn px-6 py-3 glass-dark rounded-xl text-white font-medium transition-all duration-300 hover:bg-primary/20" data-filter="graphic-design">Graphic Design</button>
+                <button class="filter-btn px-6 py-3 glass-dark rounded-xl text-white font-medium transition-all duration-300 hover:bg-primary/20" data-filter="social-project">Social Projects</button>
+            </div>
+
+            <div class="project-category" data-category="web-development">
+                <div class="category-header">
+                    <div class="category-icon bg-gradient-to-br from-blue-500 to-cyan-500"><i class="fas fa-code"></i></div>
+                    <div>
+                        <h3 class="text-2xl lg:text-3xl font-bold text-white">Web Development</h3>
+                        <p class="text-gray-400">Full-stack solutions with modern frameworks</p>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="project-card enhanced-card">
+                        <div class="relative mb-6">
+                            <img src="assets/img/projects/creative-kitchen.png" alt="Creative Kitchen Project" class="w-full h-48 object-cover rounded-xl">
+                            <div class="project-preview">
+                                <div class="text-center">
+                                    <h4 class="text-xl font-bold text-white mb-2">Creative Kitchen</h4>
+                                    <p class="text-white/80 mb-4">AI-powered healthy recipe web application</p>
+                                    <div class="flex justify-center space-x-4">
+                                        <a href="https://creative-kitchen-indol.vercel.app/" target="_blank" class="btn-primary">Live Demo</a>
+                                        <button onclick="openModal(this, 'creative-kitchen')" data-src="assets/img/projects/creative-kitchen/main-creative-kitchen.png" class="px-4 py-2 glass text-white rounded-lg hover:bg-white/20">View Gallery</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">Creative Kitchen</h4>
+                        <p class="text-gray-400 mb-4 text-sm">An intelligent web application designed to be a personal cooking assistant. It helps users discover healthy recipes based on the ingredients they have, powered by a smart and conversational AI.</p>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-white mb-2 text-sm">Key Features:</h5>
+                            <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                                <li><strong>AI Assistant (Gemini Pro):</strong> Ask for recipes in natural language, request modifications, and get cooking tips.</li>
+                                <li><strong>Dynamic Recipe Search:</strong> Filter recipes by ingredients, diet types, cooking time, and more.</li>
+                                <li><strong>Intuitive User Interface:</strong> A clean and visually appealing design focused on a seamless user experience.</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs">React.js</span>
+                            <span class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-xs">Python</span>
+                            <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-xs">AI Integration</span>
+                        </div>
+                    </div>
+                    <div class="project-card enhanced-card">
+                        <div class="relative mb-6">
+                            <img src="assets/img/projects/major-recommendation.png" alt="Major Recommendation Project" class="w-full h-48 object-cover rounded-xl">
+                            <div class="project-preview">
+                                <div class="text-center">
+                                    <h4 class="text-xl font-bold text-white mb-2">Major Recommendation</h4>
+                                    <p class="text-white/80 mb-4">AI-powered career guidance platform</p>
+                                    <div class="flex justify-center space-x-4">
+                                        <a href="https://bit.ly/RecommendationDemo" target="_blank" class="btn-primary">Live Demo</a>
+                                        <button onclick="openModal(this, 'major-recommendation')" data-src="assets/img/projects/major-recommendation/main-major-recommendation.png" class="px-4 py-2 glass text-white rounded-lg hover:bg-white/20">View Gallery</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">Major Recommendation System</h4>
+                        <p class="text-gray-400 mb-4 text-sm">A data-driven career guidance platform that assists students in making informed decisions about their college majors. The system leverages AI to provide personalized and objective recommendations.</p>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-white mb-2 text-sm">Key Features:</h5>
+                            <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                                <li><strong>AI-Powered Recommendations:</strong> Utilizes a machine learning model to suggest majors based on academic scores, interests, and personality traits.</li>
+                                <li><strong>Certificate Analysis (OCR):</strong> Automatically extracts skills and achievements from uploaded certificates to enhance recommendation accuracy.</li>
+                                <li><strong>Comprehensive Admin Dashboard:</strong> Allows administrators (e.g., counselors) to manage student data and oversee the system.</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-orange-500/10 text-orange-400 rounded-full text-xs">PHP</span>
+                            <span class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-xs">Python</span>
+                            <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-xs">Machine Learning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-category" data-category="ui-ux">
+                <div class="category-header">
+                    <div class="category-icon bg-gradient-to-br from-purple-500 to-pink-500"><i class="fas fa-palette"></i></div>
+                    <div>
+                        <h3 class="text-2xl lg:text-3xl font-bold text-white">UI/UX Design</h3>
+                        <p class="text-gray-400">User-centered design solutions</p>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <div class="project-card enhanced-card flex flex-col justify-between">
+                        <div>
+                            <div class="relative mb-6"><img src="assets/img/projects/learnify.png" alt="Learnify App Project" class="w-full h-48 object-cover rounded-xl"></div>
+                            <h4 class="text-xl font-bold text-white mb-3">Learnify Mobile App</h4>
+                            <p class="text-gray-400 mb-4">A study companion app designed to <strong>boost student productivity and reduce overwhelm.</strong> It features progress tracking, a smart calendar, and task reminders to create a more organized and effective learning experience.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-sm">Mobile Design</span>
+                                <span class="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-sm">Figma</span>
+                                <span class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-sm">User Research</span>
+                            </div>
+                        </div>
+                        <div class="mt-auto"><a href="project-learnify.html" class="btn-primary w-full mt-4"><span>View Case Study</span><i class="fas fa-arrow-right ml-2"></i></a></div>
+                    </div>
+                    <div class="project-card enhanced-card flex flex-col justify-between">
+                        <div>
+                            <div class="relative mb-6"><img src="assets/img/projects/digital-marketing.png" alt="Digital Marketing Website Project" class="w-full h-48 object-cover rounded-xl"></div>
+                            <h4 class="text-xl font-bold text-white mb-3">Digital Marketing Website</h4>
+                            <p class="text-gray-400 mb-4">A comprehensive redesign of a company profile website aimed at <strong>increasing user engagement and generating more leads.</strong> The project focused on improving UX, ensuring responsive design, and optimizing content strategy.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full text-sm">Web Design</span>
+                                <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-sm">Figma</span>
+                                <span class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-sm">Responsive</span>
+                            </div>
+                        </div>
+                        <div class="mt-auto"><a href="project-digital-marketing.html" class="btn-primary w-full mt-4"><span>View Case Study</span><i class="fas fa-arrow-right ml-2"></i></a></div>
+                    </div>
+                    <div class="project-card enhanced-card flex flex-col justify-between">
+                        <div>
+                            <div class="relative mb-6"><img src="assets/img/projects/Detikx.png" alt="DetikX Redesign Project" class="w-full h-48 object-cover rounded-xl"></div>
+                            <h4 class="text-xl font-bold text-white mb-3">DetikX News Portal Redesign</h4>
+                            <p class="text-gray-400 mb-4">A complete redesign of a news portal, focusing on improving navigation, content hierarchy, and creating a modern user experience with a full prototype.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-3 py-1 bg-orange-500/10 text-orange-400 rounded-full text-sm">Web Design</span>
+                                <span class="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-sm">Prototyping</span>
+                                <span class="px-3 py-1 bg-red-500/10 text-red-400 rounded-full text-sm">User Flow</span>
+                            </div>
+                        </div>
+                        <div class="mt-auto pt-4">
+                            <div class="flex flex-col gap-3">
+                                <a href="https://bit.ly/FigmaNurulAuliaHalim" target="_blank" class="btn-gradient w-full text-center px-4 py-3 text-white rounded-lg font-semibold text-sm">View Design</a>
+                                <button onclick="openModal(this, 'detikx')" data-src="assets/img/detikx/design-here-mockup-1.png" class="btn-gradient w-full text-center px-4 py-3 text-white rounded-lg font-semibold text-sm">View Gallery</button>
+                                <a href="https://bit.ly/PrototypeNurulAuliaHalim" target="_blank" class="btn-gradient w-full text-center px-4 py-3 text-white rounded-lg font-semibold text-sm">View Prototype</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-category" data-category="mobile-app">
+                <div class="category-header">
+                    <div class="category-icon bg-gradient-to-br from-orange-500 to-red-500"><i class="fas fa-mobile-alt"></i></div>
+                    <div>
+                        <h3 class="text-2xl lg:text-3xl font-bold text-white">Mobile Applications</h3>
+                        <p class="text-gray-400">Innovative mobile solutions for campus life</p>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-1 gap-8">
+                    <div class="project-card enhanced-card">
+                        <div class="grid lg:grid-cols-2 gap-8 items-center">
+                            <img src="assets/img/projects/e-canteen.png" alt="Presuniv E-Canteen Project" class="w-full h-auto object-cover rounded-xl">
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-3">Presuniv E-Canteen Mobile App</h4>
+                                <p class="text-gray-400 mb-4 text-sm">A mobile application concept designed to streamline the food ordering process at the university canteen, enhancing convenience for both students and vendors.</p>
+                                <div class="mb-4">
+                                    <h5 class="font-semibold text-white mb-2 text-sm">Key Features:</h5>
+                                    <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                                        <li><strong>Effortless Ordering:</strong> Browse menus, place orders, and pay directly within the app to avoid long queues.</li>
+                                        <li><strong>Vendor Management:</strong> A dedicated interface for vendors to manage menus and track incoming orders.</li>
+                                        <li><strong>Real-Time Updates:</strong> Users receive instant notifications on their order status, from preparation to pickup.</li>
+                                    </ul>
+                                </div>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-sm">Android Studio</span>
+                                    <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-sm">Figma</span>
+                                    <span class="px-3 py-1 bg-orange-500/10 text-orange-400 rounded-full text-sm">UI Design</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-category" data-category="graphic-design">
+                <div class="category-header">
+                    <div class="category-icon bg-gradient-to-br from-pink-500 to-rose-500"><i class="fas fa-paint-brush"></i></div>
+                    <div>
+                        <h3 class="text-2xl lg:text-3xl font-bold text-white">Graphic Design</h3>
+                        <p class="text-gray-400">Visual communication & brand identity</p>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-1 gap-8">
+                    <div class="project-card enhanced-card">
+                        <div class="relative mb-6">
+                            <div class="gallery-grid grid-cols-3 md:grid-cols-6 gap-2">
+                                <div class="gallery-item cursor-pointer" onclick="openModal(this, 'graphic-design')" data-src="assets/img/graphic-design/kartini-day.png"><img src="assets/img/graphic-design/kartini-day.png" alt="Poster Hari Kartini" class="w-full h-full object-cover"></div>
+                                <div class="gallery-item cursor-pointer" onclick="openModal(this, 'graphic-design')" data-src="assets/img/graphic-design/ramadhan-kareem.jpg"><img src="assets/img/graphic-design/ramadhan-kareem.jpg" alt="Poster Ramadhan" class="w-full h-full object-cover"></div>
+                                <div class="gallery-item cursor-pointer" onclick="openModal(this, 'graphic-design')" data-src="assets/img/graphic-design/world-mental-health.jpg"><img src="assets/img/graphic-design/world-mental-health.jpg" alt="Poster World Mental Health" class="w-full h-full object-cover"></div>
+                                <div class="gallery-item cursor-pointer" onclick="openModal(this, 'graphic-design')" data-src="assets/img/graphic-design/world-mental-health-2.jpg"><img src="assets/img/graphic-design/world-mental-health-2.jpg" alt="Poster World Mental Health" class="w-full h-full object-cover"></div>
+                                <div class="gallery-item cursor-pointer" onclick="openModal(this, 'graphic-design')" data-src="assets/img/graphic-design/feeds-kemerdekaan.png"><img src="assets/img/graphic-design/feeds-kemerdekaan.png" alt="Poster Kemerdekaan" class="w-full h-full object-cover"></div>
+                                <div class="gallery-item flex items-center justify-center font-bold bg-slate-700 cursor-pointer" onclick="openModal(this, 'graphic-design')" data-src="assets/img/graphic-design/mcm-kartini.png"><span>+ More...</span></div>
+                            </div>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">MCMBKM Social Media Design</h4>
+                        <p class="text-gray-400 mb-4">Responsible for designing and creating specialized visual content for Instagram feeds for various campus campaigns and events.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-pink-500/10 text-pink-400 rounded-full text-sm">Social Media Design</span>
+                            <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-sm">Visual Content</span>
+                            <span class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-sm">Feed Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-category" data-category="social-project">
+                <div class="category-header">
+                    <div class="category-icon bg-gradient-to-br from-teal-500 to-cyan-500"><i class="fas fa-hands-helping"></i></div>
+                    <div>
+                        <h3 class="text-2xl lg:text-3xl font-bold text-white">Social Projects</h3>
+                        <p class="text-gray-400">Giving back to the community</p>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-1 gap-8">
+                    <div class="project-card enhanced-card">
+                        <div class="grid lg:grid-cols-2 gap-8 items-center">
+                            <img src="assets/img/projects/social-project.png" alt="Social Project Rumah Pelita" class="w-full h-auto object-cover rounded-xl">
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-3">Rumah Pelita Social Program</h4>
+                                <p class="text-gray-400 mb-4">A social program involving a visit to the Rumah Pelita foundation, a reading and learning house for underprivileged children. We distributed items such as textbooks and taught while playing with the children.</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-3 py-1 bg-teal-500/10 text-teal-400 rounded-full text-sm">Community Service</span>
+                                    <span class="px-3 py-1 bg-cyan-500/10 text-cyan-400 rounded-full text-sm">Education</span>
+                                    <span class="px-3 py-1 bg-sky-500/10 text-sky-400 rounded-full text-sm">Volunteering</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="organization" class="py-24 bg-gradient-to-br from-dark via-slate-800 to-slate-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Campus Activities</span>
+                <h2 class="text-4xl lg:text-6xl font-black text-white mb-6">Organization <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Experience</span></h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Active contributions in campus organizations to develop leadership and teamwork skills.</p>
+            </div>
+
+            <div class="relative border-l-2 border-primary/30 max-w-3xl mx-auto">
+                <div class="mb-12 pl-12 relative">
+                    <div class="absolute -left-5 w-10 h-10 bg-dark rounded-full flex items-center justify-center border-4 border-primary">
+                        <i class="fas fa-users text-white"></i>
+                    </div>
+                    <div class="enhanced-card group">
+                        <img src="assets/img/organization/head-of-smm.jpg" alt="Head of Social Media Management" class="w-full h-56 object-cover rounded-xl mb-6 transform group-hover:scale-105 transition-transform duration-300">
+                        <p class="text-primary font-semibold mb-2">October 2023 - October 2024</p>
+                        <h3 class="text-2xl font-bold text-white mb-3">Social Media Management Division Head</h3>
+                        <h4 class="text-lg text-gray-400 font-medium mb-4">Mahasiswa Penggerak President University</h4>
+                        <ul class="list-disc list-inside text-gray-400 space-y-2">
+                            <li>Led a team of 4 in managing organizational social media, increasing follower engagement by 20%.</li>
+                            <li>Coordinated the creation of 10+ monthly content designs for independent campus programs (MSIB, Teaching Campus, etc.).</li>
+                            <li>Managed content production and distribution timelines through an effective task delegation system.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-12 pl-12 relative">
+                    <div class="absolute -left-5 w-10 h-10 bg-dark rounded-full flex items-center justify-center border-4 border-primary">
+                        <i class="fas fa-palette text-white"></i>
+                    </div>
+                    <div class="enhanced-card group">
+                        <img src="assets/img/organization/member-smm.png" alt="Social Media Management Division Member" class="w-full h-56 object-cover rounded-xl mb-6 transform group-hover:scale-105 transition-transform duration-300">
+                        <p class="text-primary font-semibold mb-2">January 2023 - October 2023</p>
+                        <h3 class="text-2xl font-bold text-white mb-3">Social Media Management Division Member</h3>
+                        <h4 class="text-lg text-gray-400 font-medium mb-4">Mahasiswa Penggerak President University</h4>
+                        <ul class="list-disc list-inside text-gray-400 space-y-2">
+                            <li>Developed the multimedia content pipeline from concept to production, including visual content for social media feeds, stories, and reels.</li>
+                            <li>Managed the full video production workflow, including recording, editing, and post-production.</li>
+                            <li>Designed an automated certificate generation system for webinar speakers.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="events" class="py-24 bg-gradient-to-br from-darker via-dark to-slate-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Event Activities</span>
+                <h2 class="text-4xl lg:text-6xl font-black text-white mb-6">Event <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Experience</span></h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Hands-on involvement in various campus events, contributing in multimedia and documentation roles.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="enhanced-card group">
+                    <img src="assets/img/experience/event-leadership2.png" alt="President Youth Leadership Camp" class="w-full h-56 object-cover rounded-xl mb-6 transform group-hover:scale-105 transition-transform duration-300">
+                    <h4 class="text-xl font-bold text-white mb-2">President Youth Leadership Camp 2023</h4>
+                    <p class="text-primary font-medium mb-3">Documentation Team Member</p>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Successfully documented all event activities and responsibilities, contributing to the team's overall success in a high-energy leadership program.</p>
+                </div>
+                <div class="enhanced-card group">
+                    <img src="assets/img/experience/event-investasi.png" alt="Workshop Berani Investasi" class="w-full h-56 object-cover rounded-xl mb-6 transform group-hover:scale-105 transition-transform duration-300">
+                    <h4 class="text-xl font-bold text-white mb-2">"Berani Investasi" Workshop 2023</h4>
+                    <p class="text-primary font-medium mb-3">Multimedia Design & Documentation Team</p>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Contributed as a member of the multimedia design and documentation team for a seminar hosted by the Investment Club PU, gaining valuable insights from the speakers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements" class="py-24 bg-gradient-to-br from-darker via-dark to-slate-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Recognition</span>
+                <h2 class="text-4xl lg:text-6xl font-black text-white mb-6">Awards & <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Achievements</span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="enhanced-card group">
+                    <img src="assets/img/achievements/ayotron 2nd winner.png." alt="Ayotron 2nd Winner" class="w-full h-56 object-cover rounded-xl mb-6 transform group-hover:scale-105 transition-transform duration-300">
+                    <h4 class="text-xl font-bold text-white mb-2">2nd Place Ayotron Competition 2022</h4>
+                    <p class="text-primary font-medium mb-3">Jakarta Selatan, Indonesia</p>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Successfully won second place by building a functional web product using the Ayoconnect payment API within 3 days. I was responsible for the user interface design and system architecture.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-yellow-900/30 text-yellow-400 rounded-full text-xs font-medium">UI Design</span>
+                        <span class="px-3 py-1 bg-yellow-900/30 text-yellow-400 rounded-full text-xs font-medium">System Architecture</span>
+                        <span class="px-3 py-1 bg-yellow-900/30 text-yellow-400 rounded-full text-xs font-medium">Team Leadership</span>
+                    </div>
+                </div>
+                <div class="enhanced-card group">
+                    <img src="assets/img/achievements/outstanding-2022.jpg" alt="Outstanding Student Award 2022" class="w-full h-56 object-cover rounded-xl mb-6 transform group-hover:scale-105 transition-transform duration-300">
+                    <h4 class="text-xl font-bold text-white mb-2">Outstanding Student Award 2022</h4>
+                    <p class="text-primary font-medium mb-3">President University</p>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Received an award as a high-achieving student from President University for academic achievements and contributions to campus activities.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full text-xs font-medium">Academic Excellence</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full text-xs font-medium">Campus Contribution</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full text-xs font-medium">Leadership</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-24 bg-gradient-to-br from-dark via-slate-800 to-slate-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Professional Journey</span>
+                <h2 class="text-4xl lg:text-6xl font-black text-white mb-6">Work <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Experience</span></h2>
+            </div>
+
+            <div class="relative border-l-2 border-primary/30 max-w-3xl mx-auto">
+                <div class="mb-12 pl-12 relative">
+                    <div class="absolute -left-5 w-10 h-10 bg-dark rounded-full flex items-center justify-center border-4 border-primary">
+                        <i class="fas fa-plane-departure text-white"></i>
+                    </div>
+                    <div class="enhanced-card group">
+                        <img src="C:\portfolio-website\assets\img\experience\Angkasa Pura.jpg" alt="Internship at PT. Angkasa Pura Indonesia" class="w-full h-56 object-cover rounded-xl mb-6 transform group-hover:scale-105 transition-transform duration-300">
+                        
+                        <p class="text-sm text-primary font-semibold mb-2">January 2025 – April 2025</p>
+                        <h3 class="text-2xl font-bold text-white mb-1">ICT Airport Technology – Internship</h3>
+                        <p class="text-gray-400 mb-4">PT. Angkasa Pura Indonesia YIA Branch Office – Yogyakarta, Indonesia</p>
+                        <ul class="list-disc list-inside text-gray-400 space-y-2 text-sm">
+                            <li>Analyzed and optimized user interfaces of aviation information systems to improve user experience and operational efficiency.</li>
+                            <li>Supported technology infrastructure maintenance including monitoring systems and WiFi networks.</li>
+                            <li>Collaborated with technical teams in troubleshooting and critical system maintenance to develop deep understanding of enterprise systems and airport technology security protocols.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-12 pl-12 relative">
+                    <div class="absolute -left-5 w-10 h-10 bg-dark rounded-full flex items-center justify-center border-4 border-primary">
+                        <i class="fas fa-chalkboard-teacher text-white"></i>
+                    </div>
+                    <div class="enhanced-card group">
+                        <img src="C:\portfolio-website\assets\img\experience\Teaching.jpg" alt="Internship as IT Teacher" class="w-full h-56 object-cover rounded-xl mb-6 transform group-hover:scale-105 transition-transform duration-300">
+                        
+                        <p class="text-sm text-primary font-semibold mb-2">September 2024 – December 2024</p>
+                        <h3 class="text-2xl font-bold text-white mb-1">IT Teacher – Internship</h3>
+                        <p class="text-gray-400 mb-4">SMA Plus Budi Utomo Makassar – Makassar, Indonesia</p>
+                        <ul class="list-disc list-inside text-gray-400 space-y-2 text-sm">
+                            <li>Taught fundamental web programming (HTML, CSS, JavaScript) to over 40 high school students.</li>
+                            <li>Designed and developed interactive learning modules and programming practice guides.</li>
+                            <li>Created real-world application-based case studies to enhance understanding of programming concepts.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="py-24 bg-darker">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Credentials</span>
+                <h2 class="text-4xl lg:text-6xl font-black text-white">Licenses & <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Certifications</span></h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Validation of my skills from recognized institutions.</p>
+            </div>
+
+            <div class="space-y-8">
+
+                <div class="enhanced-card group text-left p-6 transition-all duration-300 hover:border-primary/50 cursor-pointer" onclick="openModal(this, 'certifications')" data-src="assets/img/certs/kominfo.png" data-index="0">
+                    <div class="flex flex-col sm:flex-row items-center gap-6">
+                        <img src="assets/img/certs/kominfo.png" alt="Kominfo Certificate" class="w-48 h-32 object-cover rounded-lg border-2 border-slate-700 group-hover:scale-105 transition-transform duration-300">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-white mb-1">Kominfo Generative AI</h3>
+                            <p class="text-gray-400 text-sm">Issued by Kominfo</p>
+                        </div>
+                        <i class="fas fa-expand text-gray-600 group-hover:text-primary transition-colors text-2xl"></i>
+                    </div>
+                </div>
+
+                <div class="enhanced-card group text-left p-6 transition-all duration-300 hover:border-primary/50 cursor-pointer" onclick="openModal(this, 'certifications')" data-src="assets/img/certs/myskill.png" data-index="1">
+                    <div class="flex flex-col sm:flex-row items-center gap-6">
+                        <img src="assets/img/certs/myskill.png" alt="MySkill Certificate" class="w-48 h-32 object-cover rounded-lg border-2 border-slate-700 group-hover:scale-105 transition-transform duration-300">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-white mb-1">UI/UX Research & Design</h3>
+                            <p class="text-gray-400 text-sm">Issued by MySkill (Batch 14)</p>
+                        </div>
+                        <i class="fas fa-expand text-gray-600 group-hover:text-primary transition-colors text-2xl"></i>
+                    </div>
+                </div>
+
+                <div class="enhanced-card group text-left p-6 transition-all duration-300 hover:border-primary/50 cursor-pointer" onclick="openModal(this, 'certifications')" data-src="assets/img/certs/pesc.jpg" data-index="2">
+                    <div class="flex flex-col sm:flex-row items-center gap-6">
+                        <img src="assets/img/certs/pesc.jpg" alt="PESC Certificate" class="w-48 h-32 object-cover rounded-lg border-2 border-slate-700 group-hover:scale-105 transition-transform duration-300">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-white mb-1">PESC Certification</h3>
+                            <p class="text-gray-400 text-sm">Issued by President University</p>
+                        </div>
+                        <i class="fas fa-expand text-gray-600 group-hover:text-primary transition-colors text-2xl"></i>
+                    </div>
+                </div>
+
+                <div class="enhanced-card group text-left p-6 transition-all duration-300 hover:border-primary/50 cursor-pointer" onclick="openModal(this, 'certifications')" data-src="assets/img/certs/cert-mcmbkm.jpg" data-index="3">
+                    <div class="flex flex-col sm:flex-row items-center gap-6">
+                        <img src="assets/img/certs/cert-mcmbkm.jpg" alt="MCMBKM Certificate" class="w-48 h-32 object-cover rounded-lg border-2 border-slate-700 group-hover:scale-105 transition-transform duration-300">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-white mb-1">Head of Social Media Management</h3>
+                            <p class="text-gray-400 text-sm">Issued by MCMBKM President University</p>
+                        </div>
+                        <i class="fas fa-expand text-gray-600 group-hover:text-primary transition-colors text-2xl"></i>
+                    </div>
+                </div>
+                
+                <div class="enhanced-card group text-left p-6 transition-all duration-300 hover:border-primary/50 cursor-pointer" onclick="openModal(this, 'certifications')" data-src="assets/img/certs/outstanding.png" data-index="4">
+                    <div class="flex flex-col sm:flex-row items-center gap-6">
+                        <img src="assets/img/certs/outstanding.png" alt="Outstanding Student Certificate" class="w-48 h-32 object-cover rounded-lg border-2 border-slate-700 group-hover:scale-105 transition-transform duration-300">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-white mb-1">Outstanding Student</h3>
+                            <p class="text-gray-400 text-sm">Issued by President University</p>
+                        </div>
+                        <i class="fas fa-expand text-gray-600 group-hover:text-primary transition-colors text-2xl"></i>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-gradient-to-br from-dark via-slate-800 to-slate-900 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -ml-48 -mt-48"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -mr-48 -mb-48"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Get In Touch</span>
+                <h2 class="text-4xl lg:text-6xl font-black text-white mb-6">Let's Create Something <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Amazing Together</span></h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Ready to bring your ideas to life? Let's discuss your project and make it happen.</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-5 gap-12 items-start">
+                <div class="lg:col-span-2 space-y-8">
+                    <div>
+                        <h3 class="text-2xl lg:text-3xl font-bold text-white mb-8">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 glass rounded-2xl flex items-center justify-center flex-shrink-0 mt-1"><i class="fas fa-envelope text-primary text-xl"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">Email Address</h4>
+                                    <p class="text-gray-300 mb-1">nurulauliahalim20@gmail.com</p>
+                                    <p class="text-sm text-gray-400">I'll respond within 24 hours</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 glass rounded-2xl flex items-center justify-center flex-shrink-0 mt-1"><i class="fas fa-phone text-primary text-xl"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">Phone Number</h4>
+                                    <p class="text-gray-300 mb-1">+62 877 7833 3545</p>
+                                    <p class="text-sm text-gray-400">Available</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 glass rounded-2xl flex items-center justify-center flex-shrink-0 mt-1"><i class="fas fa-map-marker-alt text-primary text-xl"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">Location</h4>
+                                    <p class="text-gray-300 mb-1">Jakarta Barat</p>
+                                    <p class="text-sm text-gray-400">Indonesia</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-white mb-4">Follow Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://linkedin.com/in/aulyh" target="_blank" class="tooltip w-12 h-12 bg-gradient-to-br from-primary to-yellow-400 text-white rounded-2xl flex items-center justify-center hover:scale-110 transition-all duration-300" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in text-xl"></i></a>
+                            <a href="https://github.com/Aulyhalim" target="_blank" class="tooltip w-12 h-12 glass text-white rounded-2xl flex items-center justify-center hover:scale-110 transition-all duration-300" data-tooltip="GitHub"><i class="fab fa-github text-xl"></i></a>
+                            <a href="mailto:nurulauliahalim20@gmail.com" class="tooltip w-12 h-12 bg-gradient-to-br from-accent to-green-600 text-white rounded-2xl flex items-center justify-center hover:scale-110 transition-all duration-300" data-tooltip="Email"><i class="fas fa-envelope text-xl"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-3">
+                    <div class="enhanced-card p-8 lg:p-12">
+                        <h3 class="text-2xl lg:text-3xl font-bold text-white mb-8">Send Me a Message</h3>
+                        <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+                             <input type="hidden" name="access_key" value="0d0cf760-c846-4661-8b92-0b7f9d312dad">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-bold text-gray-300 mb-2">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required class="form-input w-full px-4 py-3 rounded-xl transition-all" placeholder="">
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-bold text-gray-300 mb-2">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" required class="form-input w-full px-4 py-3 rounded-xl transition-all" placeholder="">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-bold text-gray-300 mb-2">Email Address *</label>
+                                <input type="email" id="email" name="email" required class="form-input w-full px-4 py-3 rounded-xl transition-all" placeholder="">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-bold text-gray-300 mb-2">Message Details *</label>
+                                <textarea id="message" name="message" rows="5" required class="form-input w-full px-4 py-3 rounded-xl transition-all resize-none" placeholder="Send me a message..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full btn-primary py-4 px-8 text-lg font-bold">
+                                <span class="flex items-center justify-center space-x-2">
+                                    <span>Send Message</span>
+                                    <i class="fas fa-paper-plane"></i>
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white py-16 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -ml-32 -mt-32"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -mr-48 -mb-48"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-2">
+                    <div class="text-3xl font-black mb-4">
+                        <span class="text-white">Nurul Aulia</span>
+                        <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"> Halim</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">UI/UX Designer & Full Stack Developer creating exceptional digital experiences. Let's build something amazing together.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6">Quick Links</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#home" class="text-gray-400 hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-primary transition-colors">About</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-primary transition-colors">Projects</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-primary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6">Services</h4>
+                    <ul class="space-y-4">
+                        <li><span class="text-gray-400">UI/UX Design</span></li>
+                        <li><span class="text-gray-400">Web Development</span></li>
+                        <li><span class="text-gray-400">AI Integration</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">&copy; 2025 Nurul Aulia Halim. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-primary to-yellow-400 text-white rounded-full shadow-lg hover:scale-110 transition-all duration-300 opacity-0 invisible z-50 flex items-center justify-center">
+        <i class="fas fa-arrow-up text-lg"></i>
+    </button>
+
+    <div id="imageModal" class="modal">
+        <div class="modal-content-container relative w-full h-full flex items-center justify-center p-4">
+            <img class="modal-content max-w-4xl max-h-[80vh] rounded-2xl shadow-2xl object-contain" id="modalImage" alt="Project gallery image">
+            <button class="modal-nav prev" id="prevBtn" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+            <button class="modal-nav next" id="nextBtn" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+            <div class="absolute top-6 right-6">
+                <button id="closeModal" class="w-14 h-14 bg-black/50 backdrop-blur-sm text-white rounded-full flex items-center justify-center hover:bg-black/70 transition-colors text-xl" aria-label="Close gallery"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2">
+                <div class="glass px-6 py-3 rounded-full backdrop-blur-sm"><span id="imageCounter" class="text-white font-medium">1 / 4</span></div>
+            </div>
+             <div class="absolute bottom-6 right-6">
+                <div class="glass px-4 py-2 rounded-full backdrop-blur-sm"><span id="imageTitle" class="text-white text-sm">Image Title</span></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- PROJECT GALLERY DATA ---
+             const projectGalleries = {
+                'certifications': [
+                    { src: "assets/img/certs/kominfo.png", title: "Kominfo Generative AI" },
+                    { src: "assets/img/certs/myskill.png", title: "UI/UX Research & Design" },
+                    { src: "assets/img/certs/pesc.jpg", title: "PESC Certification" },
+                    { src: "assets/img/certs/cert-mcmbkm.jpg", title: "Head of Social Media Management" },
+                    { src: "assets/img/certs/outstanding.png", title: "Outstanding Student" }
+                ],
+
+                'organization': [
+                    { src: "assets/img/organization/head-of-smm.png", title: "Head of Social Media Management" },
+                    { src: "assets/img/organization/member-smm.png", title: "Social Media Management Division Member" },
+                    
+                ],
+                'events': [
+                    { src: "assets/img/experience/event-leadership2.png", title: "President Youth Leadership Camp" },
+                    { src: "assets/img/experience/event-investasi.png", title: "Workshop Berani Investasi" },
+                    
+                ],
+                'graphic-design': [
+                    { src: "assets/img/graphic-design/kartini-day.png", title: "Poster Hari Kartini" },
+                    { src: "assets/img/graphic-design/ramadhan-kareem.jpg", title: "Ucapan Ramadhan" },
+                    { src: "assets/img/graphic-design/world-mental-health.jpg", title: "Hari Kesehatan Mental" },
+                    { src: "assets/img/graphic-design/world-mental-health-2.jpg", title: "Hari Kesehatan Mental" },
+                    { src: "assets/img/graphic-design/sosialisasi.png", title: "Poster Sosialisasi" },
+                    { src: "assets/img/graphic-design/feeds-kemerdekaan.png", title: "Poster Kemerdekaan" },
+                    { src: "assets/img/graphic-design/national-teachers-day.jpg", title: "Hari Guru Nasional" },
+                    { src: "assets/img/graphic-design/design-ig-sebelum.jpg", title: "Instagram Feed Design (Before)" },
+                    { src: "assets/img/graphic-design/design-ig-sesudah.jpg", title: "Instagram Feed Design (After)" },
+                    { src: "assets/img/graphic-design/FEEDS-MCMBKM-donor-darah-2024.png", title: "Poster Donor Darah" },
+                    { src: "assets/img/graphic-design/igs-ramadhan-design.jpg", title: "Instagram Story Ramadhan" },
+                    { src: "assets/img/graphic-design/igs-ramadhan-story.jpg", title: "Instagram Story Ramadhan" },
+                    { src: "assets/img/graphic-design/Instastory-kemerdekaan.png", title: "Instagram Story Kemerdekaan" },
+                    { src: "assets/img/graphic-design/Bangkit-1.png", title: "Poster Program Bangkit 1" },
+                    { src: "assets/img/graphic-design/Bangkit-2.png", title: "Poster Program Bangkit 2" },
+                    { src: "assets/img/graphic-design/Bangkit-3.png", title: "Poster Program Bangkit 3" },
+                    { src: "assets/img/graphic-design/Bangkit-4.png", title: "Poster Program Bangkit 4" },
+                    { src: "assets/img/graphic-design/Bangkit-5.png", title: "Poster Program Bangkit 5" }
+                ],
+                'detikx': [
+                    { src: "assets/img/detikx/design-here-mockup-1.png", title: "High Fidelity Mockup 1" },
+                    { src: "assets/img/detikx/design-here-mockup-2.png", title: "High Fidelity Mockup 2" },
+                    { src: "assets/img/detikx/design-here-mockup-3.png", title: "High Fidelity Mockup 3" },
+                    { src: "assets/img/detikx/design-here-mockup-4.png", title: "High Fidelity Mockup 4" },
+                    { src: "assets/img/detikx/detikx-home-1.png", title: "HomePage 1" },
+                    { src: "assets/img/detikx/detikx-home-2.png", title: "HomePage 2" },
+                    { src: "assets/img/detikx/detikx-home-3.png", title: "HomePage 3" },
+                    { src: "assets/img/detikx/detikx-spotlight-1.png", title: "Spotlight 1" },
+                    { src: "assets/img/detikx/detikx-spotlight-2.png", title: "Spotlight 2" },
+                    { src: "assets/img/detikx/detikx-investigasi-1.png", title: "Investigasi 1" },
+                    { src: "assets/img/detikx/detikx-investigasi-2.png", title: "Investigasi 2" },
+                    { src: "assets/img/detikx/detikx-interneso-1.png", title: "Interneso 1" },
+                    { src: "assets/img/detikx/detikx-interneso-2.png", title: "Interneso 2" },
+                    { src: "assets/img/detikx/detikx-crime-1.png", title: "Crime 1" },
+                    { src: "assets/img/detikx/detikx-crime-2.png", title: "Crime 2" },
+                    { src: "assets/img/detikx/detikx-index-1.png", title: "Index 1" },
+                    { src: "assets/img/detikx/detikx-index-2.png", title: "Index 2" },
+                ],
+                'creative-kitchen': [
+                     { src: "assets/img/projects/creative-kitchen/main-creative-kitchen.png", title: "Creative Kitchen Overview" },
+                    { src: "assets/img/projects/creative-kitchen/creative-kitchen-Auly-assitant.png", title: "Feature: AI Assistant" },
+                    { src: "assets/img/projects/creative-kitchen/creative-kitchen-filter.png", title: "Feature: Dynamic Search & Filter" },
+                    { src: "assets/img/projects/creative-kitchen/creative-kitchen-home-1.png", title: "Homepage Layout" },
+                    { src: "assets/img/projects/creative-kitchen/creative-kitchen-home-2.png", title: "Homepage Layout" },
+                    { src: "assets/img/projects/creative-kitchen/creative-kitchen-home-3.png", title: "Homepage Layout" },
+                    { src: "assets/img/projects/creative-kitchen/creative-kitchen-recipes.png", title: "Recipes Page"},
+                    { src: "assets/img/projects/creative-kitchen/creative-kitchen-articles.png", title: "Article Information Page" },
+                    { src: "assets/img/projects/creative-kitchen/creative-kitchen-more.png", title: "More Info Page"  },
+                ],
+                'major-recommendation': [
+                    { src: "assets/img/projects/major-recommendation/main-major-recommendation.png", title: "Major Recommendation Overview" },
+                    { src: "assets/img/projects/major-recommendation/outputmajor.png", title: "Feature: AI Major Recommendation"},
+                    { src: "assets/img/projects/major-recommendation/output-ocr.png", title: "Feature: Certificate Analysis (OCR)" },
+                    { src: "assets/img/projects/major-recommendation/major-recom-dashboard-1.png", title: "Student Dashboard 1"  },
+                    { src: "assets/img/projects/major-recommendation/major-recom-dashboard-2.png", title: "Student Dashboard 2"},
+                    { src: "assets/img/projects/major-recommendation/major-recom-leaderboard-1.png", title: "Student Leaderboard"  },
+                    { src: "assets/img/projects/major-recommendation/major-recom-admin-dashboard.png", title: "Admin Dashboard" },
+                    { src: "assets/img/projects/major-recommendation/major-recom-admin-datasiswa.png", title: "Admin Student Data"}
+                ]
+            };
+            
+            // --- MOBILE MENU ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuBtn.innerHTML = mobileMenu.classList.contains('hidden') ? `<i class="fas fa-bars text-xl"></i>` : `<i class="fas fa-times text-xl"></i>`;
+            });
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.innerHTML = `<i class="fas fa-bars text-xl"></i>`;
+                });
+            });
+
+            // --- SCROLL-BASED ANIMATIONS & NAV HIGHLIGHTING ---
+            const backToTopBtn = document.getElementById('back-to-top');
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.remove('opacity-0', 'invisible');
+                } else {
+                    backToTopBtn.classList.add('opacity-0', 'invisible');
+                }
+
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-primary');
+                    link.querySelector('span').classList.remove('w-full');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('text-primary');
+                        link.querySelector('span').classList.add('w-full');
+                    }
+                });
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // --- INTERSECTION OBSERVER FOR ANIMATIONS ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.classList.contains('skill-progress')) {
+                            entry.target.classList.add('animate');
+                        }
+                        if (entry.target.hasAttribute('id') && entry.target.id.includes('-count')) {
+                            animateCountUp(entry.target);
+                        }
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            document.querySelectorAll('.skill-progress, [id$="-count"]').forEach(el => observer.observe(el));
+            
+            function animateCountUp(el) {
+                const target = +el.textContent;
+                el.textContent = '0';
+                const duration = 2000;
+                let start = null;
+                const step = (timestamp) => {
+                    if (!start) start = timestamp;
+                    const progress = Math.min((timestamp - start) / duration, 1);
+                    el.textContent = Math.floor(progress * target);
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                         el.textContent = target + (el.id === 'projects-count' || el.id === 'experience-count' ? '+' : '');
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            // --- PROJECT FILTERING ---
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCategories = document.querySelectorAll('.project-category');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const filter = btn.getAttribute('data-filter');
+                    projectCategories.forEach(category => {
+                        category.style.display = (filter === 'all' || category.dataset.category === filter) ? 'block' : 'none';
+                    });
+                });
+            });
+
+            // --- GALLERY MODAL ---
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalCounter = document.getElementById('imageCounter');
+            const modalTitle = document.getElementById('imageTitle');
+            const closeModalBtn = document.getElementById('closeModal');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            let currentGallery = [];
+            let currentIndex = 0;
+
+            window.openModal = (element, galleryKey) => {
+                currentGallery = projectGalleries[galleryKey] || [];
+                if (currentGallery.length === 0) return;
+                const clickedSrc = element.getAttribute('data-src');
+                currentIndex = currentGallery.findIndex(img => img.src === clickedSrc);
+                if (currentIndex === -1) currentIndex = 0;
+                updateModalContent();
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            function updateModalContent() {
+                if (currentGallery.length > 0) {
+                    modalImage.src = currentGallery[currentIndex].src;
+                    modalTitle.textContent = currentGallery[currentIndex].title;
+                    modalCounter.textContent = `${currentIndex + 1} / ${currentGallery.length}`;
+                }
+            }
+
+            const closeModal = () => {
+                 modal.classList.remove('active');
+                 document.body.style.overflow = '';
+            };
+
+            closeModalBtn.onclick = closeModal;
+            modal.onclick = (e) => {
+                if (e.target === modal || e.target.classList.contains('modal-content-container')) {
+                    closeModal();
+                }
+            };
+
+            prevBtn.onclick = () => {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : currentGallery.length - 1;
+                updateModalContent();
+            };
+
+            nextBtn.onclick = () => {
+                currentIndex = (currentIndex < currentGallery.length - 1) ? currentIndex + 1 : 0;
+                updateModalContent();
+            };
+            
+            document.addEventListener('keydown', (e) => {
+                if (modal.classList.contains('active')) {
+                    if (e.key === 'ArrowLeft') prevBtn.click();
+                    else if (e.key === 'ArrowRight') nextBtn.click();
+                    else if (e.key === 'Escape') closeModal();
+                }
+            });
+
+            // --- CONTACT FORM ---
+            const contactForm = document.getElementById('contact-form');
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalButtonHTML = submitButton.innerHTML;
+
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Ubah tombol menjadi status loading
+                submitButton.disabled = true;
+                submitButton.innerHTML = `
+                    <span class="flex items-center justify-center space-x-2">
+                        <span>Sending...</span>
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </span>`;
+
+                const formData = new FormData(contactForm);
+                const object = {};
+                formData.forEach((value, key) => {
+                    object[key] = value;
+                });
+                const json = JSON.stringify(object);
+
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                })
+                .then(async (response) => {
+                    let jsonResponse = await response.json();
+                    if (response.status == 200) {
+                        alert('Success! Your message has been sent successfully.');
+                    } else {
+                        console.log(response);
+                        alert(`Error: ${jsonResponse.message}`);
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert('An error occurred. Please try again later.');
+                })
+                .finally(() => {
+                    // Kembalikan tombol ke keadaan semula dan reset form
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonHTML;
+                    contactForm.reset();
+                });
+            });
+
+            // --- TYPING ANIMATION FOR ROLE TEXT ---
+            const roleText = document.getElementById('role-text');
+            if(roleText) {
+                const roles = ['UI/UX Designer', 'Full Stack Developer', 'AI Integration Specialist', 'Creative Problem Solver'];
+                let roleIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+
+                function typeRole() {
+                    const currentRole = roles[roleIndex];
+                    let typeSpeed = isDeleting ? 50 : 100;
+
+                    if (isDeleting) {
+                        roleText.textContent = currentRole.substring(0, charIndex - 1);
+                        charIndex--;
+                    } else {
+                        roleText.textContent = currentRole.substring(0, charIndex + 1);
+                        charIndex++;
+                    }
+
+                    if (!isDeleting && charIndex === currentRole.length) {
+                        typeSpeed = 2000;
+                        isDeleting = true;
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        roleIndex = (roleIndex + 1) % roles.length;
+                        typeSpeed = 500;
+                    }
+                    setTimeout(typeRole, typeSpeed);
+                }
+                setTimeout(typeRole, 1000);
+            }
+        });
+    </script>
+</body>
+</html>

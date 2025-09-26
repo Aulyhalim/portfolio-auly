@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Digital Marketing Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* >>> TAMBAHKAN BAGIAN INI <<< */
+        :root {
+            --gradient-primary: linear-gradient(135deg, #D97706 0%, #F59E0B 50%, #FBBF24 100%);
+        }
+
+        body { font-family: 'Inter', sans-serif; background: #020617; color: white; }
+        .grid-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
+        .case-study-img { border-radius: 0.75rem; border: 1px solid #334155; transition: transform 0.3s; cursor: pointer; }
+        .case-study-img:hover { transform: scale(1.02); border-color: #D97706; }
+        .text-primary { color: #D97706; }
+        .border-primary { border-color: #D97706; }
+
+        /* >>> DAN TAMBAHKAN BAGIAN INI <<< */
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1E293B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: 4px;
+        }
+
+        /* CSS UNTUK MODAL INTERAKTIF */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); }
+        .modal.active { display: flex; align-items: center; justify-content: center; animation: slideUp 0.3s ease-out; }
+        .modal-content { max-width: 85%; max-height: 85%; border-radius: 12px; }
+        .modal-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(217, 119, 6, 0.7); color: white; border: none; cursor: pointer; font-size: 24px; border-radius: 50%; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+        .modal-nav:hover { background: rgba(217, 119, 6, 1); transform: translateY(-50%) scale(1.1); }
+        .modal-nav.prev { left: 20px; }
+        .modal-nav.next { right: 20px; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <a href="index.html#projects" class="inline-flex items-center text-primary hover:text-yellow-400 mb-8 transition-colors">
+            <i class="fas fa-arrow-left mr-2"></i>
+            Back to All Projects
+        </a>
+
+        <header class="text-center mb-16">
+            <span class="text-primary font-semibold">UI/UX Case Study</span>
+            <h1 class="text-4xl lg:text-6xl font-black my-4">Digital Marketing Website Redesign</h1>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">A company profile website redesign with a focus on improving User Experience (UX), responsive design, and optimized content layout.</p>
+        </header>
+
+        <div class="grid md:grid-cols-4 gap-8 mb-16 p-8 bg-slate-800/50 border border-slate-700 rounded-2xl items-center">
+            <div><h3 class="font-bold text-primary mb-2">My Role</h3><p>UI/UX Designer, Researcher</p></div>
+            <div><h3 class="font-bold text-primary mb-2">Tools</h3><p>Figma</p></div>
+            <div><h3 class="font-bold text-primary mb-2">Duration</h3><p>6 Weeks</p></div>
+            <div>
+                <a href="https://bit.ly/LinkFigmaAuly" target="_blank" 
+                class="inline-flex items-center justify-center w-full px-4 py-3 bg-gray-800 hover:bg-gray-700 border border-gray-600 rounded-lg transition-colors">
+                    <i class="fab fa-figma mr-2"></i>
+                    View Figma Design
+                </a>
+            </div>
+        </div>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 border-l-4 border-primary pl-4">Final Layout (Website & Mobile)</h2>
+            
+            <div class="bg-slate-900/50 rounded-lg border border-slate-700 p-8">
+                <div class="flex flex-col md:flex-row gap-8 justify-center items-stretch">
+                    
+                    <div class="flex flex-col text-center md:w-1/2">
+                        <div class="flex-grow flex items-center justify-center p-4 bg-black/20 rounded-lg">
+                            <img src="assets/img/digital-marketing/layout-website.png" alt="Final Layout Website" 
+                                class="case-study-img object-contain max-h-[400px] shadow-lg" onclick="openModalWithGallery('final-layout', 0)">
+                        </div>
+                        <div class="mt-4 text-gray-400 text-xs leading-relaxed">
+                            <p class="font-bold text-sm text-gray-300 mb-1">Layout Grid (Website)</p>
+                            <p>14 Rows ( Margin 55, Gutter 20 )</p>
+                            <p>5 Colums ( Margin 50, Gutter 20 )</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col text-center md:w-1/2">
+                        <div class="flex-grow flex items-center justify-center p-4 bg-black/20 rounded-lg">
+                            <img src="assets/img/digital-marketing/layout-mobile.png" alt="Final Layout Mobile" 
+                                class="case-study-img object-contain max-h-[400px] shadow-lg" onclick="openModalWithGallery('final-layout', 1)">
+                        </div>
+                        <div class="mt-4 text-gray-400 text-xs leading-relaxed">
+                            <p class="font-bold text-sm text-gray-300 mb-1">Layout Grid (Mobile)</p>
+                            <p>5 Rows ( Margin 45, Gutter 20 )</p>
+                            <p>5 Colums ( Margin 20, Gutter 20 )</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 border-l-4 border-primary pl-4">Wireframes</h2>
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-300">Website Version</h3>
+                <div class="grid-gallery">
+                    <div class="text-center"><img src="assets/img/digital-marketing/wireframe-web/wireframe-web-1-homepage.png" alt="Wireframe Homepage" class="case-study-img" onclick="openModalWithGallery('wireframe-web', 0)"><p class="text-xs text-gray-400 mt-2">Homepage</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/wireframe-web/wireframe-web-2-services.png" alt="Wireframe Services" class="case-study-img" onclick="openModalWithGallery('wireframe-web', 1)"><p class="text-xs text-gray-400 mt-2">Services Page</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/wireframe-web/wireframe-web-3-about.png" alt="Wireframe About Us" class="case-study-img" onclick="openModalWithGallery('wireframe-web', 2)"><p class="text-xs text-gray-400 mt-2">About Page</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/wireframe-web/wireframe-web-4-contact.png" alt="Wireframe Contact" class="case-study-img" onclick="openModalWithGallery('wireframe-web', 3)"><p class="text-xs text-gray-400 mt-2">Contact Page</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/wireframe-web/wireframe-web-5-portofolio.png" alt="Wireframe Portfolio" class="case-study-img" onclick="openModalWithGallery('wireframe-web', 4)"><p class="text-xs text-gray-400 mt-2">Portfolio Page</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/wireframe-web/wireframe-web-6-blog.png" alt="Wireframe Blog" class="case-study-img" onclick="openModalWithGallery('wireframe-web', 5)"><p class="text-xs text-gray-400 mt-2">Blog Page</p></div>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold mb-4 text-gray-300">Mobile Version</h3>
+                <div class="grid-gallery">
+                    <div class="text-center"><img src="assets/img/digital-marketing/wireframe-mobile/wireframe-mobile-1-home.png" alt="Wireframe Mobile 1" class="case-study-img" onclick="openModalWithGallery('wireframe-mobile', 0)"><p class="text-xs text-gray-400 mt-2">Homepage</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/wireframe-mobile/wireframe-mobile-2-services.png" alt="Wireframe Mobile 2" class="case-study-img" onclick="openModalWithGallery('wireframe-mobile', 1)"><p class="text-xs text-gray-400 mt-2">Services Page</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/wireframe-mobile/wireframe-mobile-3-about.png" alt="Wireframe Mobile 3" class="case-study-img" onclick="openModalWithGallery('wireframe-mobile', 1)"><p class="text-xs text-gray-400 mt-2">About Page</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/wireframe-mobile/wireframe-mobile-4-contact.png" alt="Wireframe Mobile 4" class="case-study-img" onclick="openModalWithGallery('wireframe-mobile', 1)"><p class="text-xs text-gray-400 mt-2">Contact Page</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/wireframe-mobile/wireframe-mobile-5-portofolio.png" alt="Wireframe Mobile 5" class="case-study-img" onclick="openModalWithGallery('wireframe-mobile', 1)"><p class="text-xs text-gray-400 mt-2">Portofolio Page</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/wireframe-mobile/wireframe-mobile-6-blog.png" alt="Wireframe Mobile 6" class="case-study-img" onclick="openModalWithGallery('wireframe-mobile', 1)"><p class="text-xs text-gray-400 mt-2">Blog Page</p></div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 border-l-4 border-primary pl-4">Design System</h2>
+            <p class="text-gray-400 mb-8">A consistent visual guide for colors and typography.</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <img src="assets/img/digital-marketing/color-system.png" alt="Color System" class="case-study-img" onclick="openModalWithGallery('design-system', 0)">
+                <img src="assets/img/digital-marketing/typography.png" alt="Typography" class="case-study-img" onclick="openModalWithGallery('design-system', 1)">
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-3xl font-bold mb-6 border-l-4 border-primary pl-4">High-Fidelity Mockups</h2>
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-300">Website Version</h3>
+                <div class="grid-gallery">
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-web/hifi-web-1-home-1.png" alt="Homepage - Part 1" class="case-study-img" onclick="openModalWithGallery('hifi-web', 0)"><p class="text-xs text-gray-400 mt-2">Homepage - Part 1</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-web/hifi-web-2-home-2.png" alt="Homepage - Part 2" class="case-study-img" onclick="openModalWithGallery('hifi-web', 1)"><p class="text-xs text-gray-400 mt-2">Homepage - Part 2</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-web/hifi-web-3-home-3.png" alt="Homepage - Part 3" class="case-study-img" onclick="openModalWithGallery('hifi-web', 2)"><p class="text-xs text-gray-400 mt-2">Homepage - Part 3</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-web/hifi-web-4-home-4.png" alt="Homepage - Part 4" class="case-study-img" onclick="openModalWithGallery('hifi-web', 3)"><p class="text-xs text-gray-400 mt-2">Homepage - Part 4</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-web/hifi-web-6-services-1.png" alt="Services - Part 1" class="case-study-img" onclick="openModalWithGallery('hifi-web', 4)"><p class="text-xs text-gray-400 mt-2">Services - Part 1</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-web/hifi-web-7-services-2.png" alt="Services - Part 2" class="case-study-img" onclick="openModalWithGallery('hifi-web', 5)"><p class="text-xs text-gray-400 mt-2">Services - Part 2</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-web/hifi-web-10-portofolio.png" alt="Portfolio Page" class="case-study-img" onclick="openModalWithGallery('hifi-web', 6)"><p class="text-xs text-gray-400 mt-2">Portfolio Page</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-web/hifi-web-11-about-1.png" alt="About Page" class="case-study-img" onclick="openModalWithGallery('hifi-web', 7)"><p class="text-xs text-gray-400 mt-2">About Page</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-web/hifi-web-14-blog.png" alt="Blog Page" class="case-study-img" onclick="openModalWithGallery('hifi-web', 8)"><p class="text-xs text-gray-400 mt-2">Blog Page</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-web/hifi-web-15-contact-1.png" alt="Contact Page" class="case-study-img" onclick="openModalWithGallery('hifi-web', 9)"><p class="text-xs text-gray-400 mt-2">Contact Page</p></div>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold mb-4 text-gray-300">Mobile Version</h3>
+                <div class="grid-gallery">
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-mobile/hifi-mobile-1-home-1.png" alt="Homepage 1 Mobile" class="case-study-img" onclick="openModalWithGallery('hifi-mobile', 0)"><p class="text-xs text-gray-400 mt-2">Homepage 1</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-mobile/hifi-mobile-2-home-2.png" alt="Homepage 2 Mobile" class="case-study-img" onclick="openModalWithGallery('hifi-mobile', 1)"><p class="text-xs text-gray-400 mt-2">Homepage 2</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-mobile/hifi-mobile-3-home-3.png" alt="Homepage 3 Mobile" class="case-study-img" onclick="openModalWithGallery('hifi-mobile', 1)"><p class="text-xs text-gray-400 mt-2">Homepage 3</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-mobile/hifi-mobile-4-home-4.png" alt="Homepage 4 Mobile" class="case-study-img" onclick="openModalWithGallery('hifi-mobile', 1)"><p class="text-xs text-gray-400 mt-2">Homepage 4</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-mobile/hifi-mobile-5-services-1.png" alt="Services 1 Mobile" class="case-study-img" onclick="openModalWithGallery('hifi-mobile', 1)"><p class="text-xs text-gray-400 mt-2">Services 1</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-mobile/hifi-mobile-6-services-2.png" alt="Services 2 Mobile" class="case-study-img" onclick="openModalWithGallery('hifi-mobile', 1)"><p class="text-xs text-gray-400 mt-2">Services 2</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-mobile/hifi-mobile-7-services-3.png" alt="Services 3 Mobile" class="case-study-img" onclick="openModalWithGallery('hifi-mobile', 1)"><p class="text-xs text-gray-400 mt-2">Services 3</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-mobile/hifi-mobile-8-portofolio.png" alt="Portofolio Mobile" class="case-study-img" onclick="openModalWithGallery('hifi-mobile', 1)"><p class="text-xs text-gray-400 mt-2">Portofolio</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-mobile/hifi-mobile-9-about-1.png" alt="About 1 Mobile" class="case-study-img" onclick="openModalWithGallery('hifi-mobile', 1)"><p class="text-xs text-gray-400 mt-2">About 1</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-mobile/hifi-mobile-10-about-2.png" alt="About 2 Mobile" class="case-study-img" onclick="openModalWithGallery('hifi-mobile', 1)"><p class="text-xs text-gray-400 mt-2">About 2</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-mobile/hifi-mobile-11-blog.png" alt="Blog Mobile" class="case-study-img" onclick="openModalWithGallery('hifi-mobile', 1)"><p class="text-xs text-gray-400 mt-2">Blog</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-mobile/hifi-mobile-12-contact-1.png" alt="Contact 1 Mobile" class="case-study-img" onclick="openModalWithGallery('hifi-mobile', 1)"><p class="text-xs text-gray-400 mt-2">Contact 1</p></div>
+                    <div class="text-center"><img src="assets/img/digital-marketing/hifi-mobile/hifi-mobile-13-contact-2.png" alt="Contact 2 Mobile" class="case-study-img" onclick="openModalWithGallery('hifi-mobile', 1)"><p class="text-xs text-gray-400 mt-2">Contact 2</p></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="imageModal" class="modal">
+        <div class="relative w-full h-full flex items-center justify-center p-4">
+            <img class="modal-content max-w-full max-h-full object-contain" id="modalImage" alt="Detail Gambar Proyek">
+            <button class="modal-nav prev" id="prevBtn" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+            <button class="modal-nav next" id="nextBtn" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+            <button id="closeModal" class="absolute top-6 right-6 w-14 h-14 bg-black/50 text-white rounded-full flex items-center justify-center hover:bg-black/70 text-xl" aria-label="Close gallery"><i class="fas fa-times"></i></button>
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/50 px-4 py-2 rounded-full"><span id="imageTitle" class="text-white text-sm"></span></div>
+        </div>
+    </div>
+
+    <script>
+        // Database gambar untuk setiap galeri di halaman ini
+        const galleries = {
+            'final-layout': [
+                { src: 'assets/img/digital-marketing/layout-website.png', title: 'Final Website Layout' },
+                { src: 'assets/img/digital-marketing/layout-mobile.png', title: 'Final Mobile Layout' }
+            ],
+            'wireframe-web': [
+                { src: 'assets/img/digital-marketing/wireframe-web/wireframe-web-1-homepage.png', title: 'Wireframe: Homepage' },
+                { src: 'assets/img/digital-marketing/wireframe-web/wireframe-web-2-services.png', title: 'Wireframe: Services Page' },
+                { src: 'assets/img/digital-marketing/wireframe-web/wireframe-web-3-about.png', title: 'Wireframe: About Page' },
+                { src: 'assets/img/digital-marketing/wireframe-web/wireframe-web-4-contact.png', title: 'Wireframe: Contact Page' },
+                { src: 'assets/img/digital-marketing/wireframe-web/wireframe-web-5-portofolio.png', title: 'Wireframe: Portfolio Page' },
+                { src: 'assets/img/digital-marketing/wireframe-web/wireframe-web-6-blog.png', title: 'Wireframe: Blog Page' }
+            ],
+            'wireframe-mobile': [
+                { src: 'assets/img/digital-marketing/wireframe-mobile/wireframe-mobile-1-home.png', title: 'Wireframe Mobile: Homepage' },
+                { src: 'assets/img/digital-marketing/wireframe-mobile/wireframe-mobile-2-services.png', title: 'Wireframe Mobile: Services Page' },
+                { src: 'assets/img/digital-marketing/wireframe-mobile/wireframe-mobile-3-about.png', title: 'Wireframe Mobile: About Page' },
+                { src: 'assets/img/digital-marketing/wireframe-mobile/wireframe-mobile-4-contact.png', title: 'Wireframe Mobile: Contact Page' },
+                { src: 'assets/img/digital-marketing/wireframe-mobile/wireframe-mobile-5-portofolio.png', title: 'Wireframe Mobile: Portofolio Page' },
+                { src: 'assets/img/digital-marketing/wireframe-mobile/wireframe-mobile-6-blog.png', title: 'Wireframe Mobile: Blog Page' },
+                
+            ],
+            'design-system': [
+                { src: 'assets/img/digital-marketing/color-system.png', title: 'Design System: Colors' },
+                { src: 'assets/img/digital-marketing/typography.png', title: 'Design System: Typography' }
+            ],
+            'hifi-web': [
+                { src: 'assets/img/digital-marketing/hifi-web/hifi-web-1-home-1.png', title: 'Homepage - Part 1' },
+                { src: 'assets/img/digital-marketing/hifi-web/hifi-web-2-home-2.png', title: 'Homepage - Part 2' },
+                { src: 'assets/img/digital-marketing/hifi-web/hifi-web-3-home-3.png', title: 'Homepage - Part 3' },
+                { src: 'assets/img/digital-marketing/hifi-web/hifi-web-4-home-4.png', title: 'Homepage - Part 4' },
+                { src: 'assets/img/digital-marketing/hifi-web/hifi-web-6-services-1.png', title: 'Services - Part 1' },
+                { src: 'assets/img/digital-marketing/hifi-web/hifi-web-7-services-2.png', title: 'Services - Part 2' },
+                { src: 'assets/img/digital-marketing/hifi-web/hifi-web-10-portofolio.png', title: 'Portfolio Page' },
+                { src: 'assets/img/digital-marketing/hifi-web/hifi-web-11-about-1.png', title: 'About Page' },
+                { src: 'assets/img/digital-marketing/hifi-web/hifi-web-14-blog.png', title: 'Blog Page' },
+                { src: 'assets/img/digital-marketing/hifi-web/hifi-web-15-contact-1.png', title: 'Contact Page' }
+            ],
+            'hifi-mobile': [
+                { src: 'assets/img/digital-marketing/hifi-mobile/hifi-mobile-1-home-1.png', title: 'Mobile: Homepage 1' },
+                { src: 'assets/img/digital-marketing/hifi-mobile/hifi-mobile-2-home-2.png', title: 'Mobile: Homepage 2' },
+                { src: 'assets/img/digital-marketing/hifi-mobile/hifi-mobile-3-home-3.png', title: 'Mobile: Homepage 3' },
+                { src: 'assets/img/digital-marketing/hifi-mobile/hifi-mobile-4-home-4.png', title: 'Mobile: Homepage 4' },
+                { src: 'assets/img/digital-marketing/hifi-mobile/hifi-mobile-5-services-1.png', title: 'Mobile: Services 1' },
+                { src: 'assets/img/digital-marketing/hifi-mobile/hifi-mobile-6-services-2.png', title: 'Mobile: Services 2' },
+                { src: 'assets/img/digital-marketing/hifi-mobile/hifi-mobile-7-services-3.png', title: 'Mobile: Services 3' },
+                { src: 'assets/img/digital-marketing/hifi-mobile/hifi-mobile-8-portofolio.png', title: 'Mobile: Portofolio' },
+                { src: 'assets/img/digital-marketing/hifi-mobile/hifi-mobile-9-about-1.png', title: 'Mobile: About 1' },
+                { src: 'assets/img/digital-marketing/hifi-mobile/hifi-mobile-10-about-2.png', title: 'Mobile: About 2' },
+                { src: 'assets/img/digital-marketing/hifi-mobile/hifi-mobile-11-blog.png', title: 'Mobile: Blog' },
+                { src: 'assets/img/digital-marketing/hifi-mobile/hifi-mobile-12-contact-1.png', title: 'Mobile: Contact 1' },
+                { src: 'assets/img/digital-marketing/hifi-mobile/hifi-mobile-13-contact-2.png', title: 'Mobile: Contact 2' },
+            ]
+        };
+
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('imageTitle');
+        const closeModalBtn = document.getElementById('closeModal');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentGallery = []; 
+        let currentIndex = 0;
+
+        function openModalWithGallery(galleryKey, index) {
+            currentGallery = galleries[galleryKey];
+            currentIndex = index;
+            updateModalContent();
+            modal.classList.remove('hidden');
+            modal.classList.add('active'); // Tambahkan kelas active
+            document.body.style.overflow = 'hidden';
+        }
+
+        function updateModalContent() {
+            if (currentGallery.length > 0) {
+                modalImage.src = currentGallery[currentIndex].src;
+                modalTitle.textContent = `${currentIndex + 1} / ${currentGallery.length} - ${currentGallery[currentIndex].title}`;
+            }
+        }
+        
+        function closeModal() {
+            modal.classList.remove('active'); // Hapus kelas active
+            setTimeout(() => { modal.classList.add('hidden'); }, 300); // Sesuaikan dengan durasi animasi
+            document.body.style.overflow = 'auto';
+        }
+        
+        closeModalBtn.onclick = closeModal;
+        modal.onclick = (e) => {
+            if (e.target.classList.contains('modal')) {
+                closeModal();
+            }
+        };
+        prevBtn.onclick = () => { currentIndex = (currentIndex > 0) ? currentIndex - 1 : currentGallery.length - 1; updateModalContent(); };
+        nextBtn.onclick = () => { currentIndex = (currentIndex < currentGallery.length - 1) ? currentIndex + 1 : 0; updateModalContent(); };
+        
+        document.addEventListener('keydown', (e) => { 
+            if (modal.classList.contains('active')) {
+                if (e.key === 'Escape') closeModal(); 
+                if (e.key === 'ArrowLeft') prevBtn.click(); 
+                if (e.key === 'ArrowRight') nextBtn.click();
+            }
+        });
+    </script>
+
+</body>
+</html>
