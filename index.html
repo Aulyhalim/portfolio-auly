@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio-Auly</title>
+    <title>Portofolio | Auly</title>
     <link rel="icon" type="image/png" href="assets/img/logo1.png">
     <meta name="description" content="A Full-Stack Developer and UI/UX Designer passionate about building seamless digital experiences. Explore my projects using React.js, Python, and Figma.">
     
@@ -874,7 +874,7 @@
                                             <i class="fab fa-github"></i>
                                             <span>Backend</span>
                                         </a>
-                                        <button onclick="openModal(this, 'creative-kitchen')" data-src="assets/img/projects/creative-kitchen/main-creative-kitchen.png" class="px-3 py-2 glass text-white rounded-lg hover:bg-white/20 text-sm">Gallery</button>
+                                        <button onclick="openModal(this, 'creative-kitchen')" data-src="assets/img/projects/creative-kitchen/main-creative-kitchen.png" class="px-3 py-2 glass text-white rounded-lg hover:bg-white/20 text-sm"> <i class="far fa-images"></i>  Gallery</button>
                                     </div>
                                 </div>
                             </div>
@@ -895,6 +895,46 @@
                             <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-xs">AI Integration</span>
                         </div>
                     </div>
+
+                    <div class="project-card enhanced-card">
+                        <div class="relative mb-6">
+                            <img src="assets/img/projects/job-tracker.png" alt="Job Tracker App Project" class="w-full h-48 object-cover rounded-xl">
+                            <div class="project-preview">
+                                <div class="text-center">
+                                    <h4 class="text-xl font-bold text-white mb-2">Job Tracker App</h4>
+                                    <p class="text-white/80 mb-4">A full-stack app to streamline your job search</p>
+                                    <div class="flex justify-center space-x-2">
+                                        <a href="https://auly-job-tracker-app.vercel.app/" target="_blank" class="btn-primary text-sm px-3 py-2">Live Demo</a>
+                                        <a href="https://github.com/Aulyhalim/job-tracker-app" target="_blank" class="px-3 py-2 glass text-white rounded-lg hover:bg-white/20 inline-flex items-center space-x-2 text-sm">
+                                            <i class="fab fa-github"></i>
+                                            <span>GitHub</span>
+                                        </a>
+                                        <button onclick="openModal(this, 'job-tracker-gallery')" data-src="assets/img/gallery/job-tracker/jt-1.png" class="px-3 py-2 glass text-white rounded-lg hover:bg-white/20 inline-flex items-center space-x-2 text-sm">
+                                            <i class="far fa-images"></i>
+                                            <span>Gallery</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">Job Tracker App</h4>
+                        <p class="text-gray-400 mb-4 text-sm">A full-stack application to streamline the job search process. Features user authentication, application tracking, and an interactive dashboard with charts. Hosted on Railway (backend) and Vercel (frontend).</p>
+                        <div class="mb-4">
+                            <h5 class="font-semibold text-white mb-2 text-sm">Key Features:</h5>
+                            <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                                <li><strong>Application Tracking:</strong> Log and manage all your job applications in one place.</li>
+                                <li><strong>Interactive Dashboard:</strong> Visualize job application stats with dynamic charts.</li>
+                                <li><strong>User Authentication:</strong> Secure registration and login for a personalized experience.</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs">React.js</span>
+                            <span class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-xs">Node.js</span>
+                            <span class="px-3 py-1 bg-yellow-500/10 text-yellow-400 rounded-full text-xs">Express.js</span>
+                            <span class="px-3 py-1 bg-cyan-500/10 text-cyan-400 rounded-full text-xs">MySQL</span>
+                            <span class="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs">Sequelize</span>
+                        </div>
+                    </div>
                     <div class="project-card enhanced-card">
                         <div class="relative mb-6">
                             <img src="assets/img/projects/major-recommendation.png" alt="Major Recommendation Project" class="w-full h-48 object-cover rounded-xl">
@@ -904,7 +944,7 @@
                                     <p class="text-white/80 mb-4">AI-powered career guidance platform</p>
                                     <div class="flex justify-center space-x-4">
                                         <a href="https://bit.ly/RecommendationDemo" target="_blank" class="btn-primary">Live Demo</a>
-                                        <button onclick="openModal(this, 'major-recommendation')" data-src="assets/img/projects/major-recommendation/main-major-recommendation.png" class="px-4 py-2 glass text-white rounded-lg hover:bg-white/20">View Gallery</button>
+                                        <button onclick="openModal(this, 'major-recommendation')" data-src="assets/img/projects/major-recommendation/main-major-recommendation.png" class="px-4 py-2 glass text-white rounded-lg hover:bg-white/20"> <i class="far fa-images"></i>  Gallery</button>
                                     </div>
                                 </div>
                             </div>
@@ -1539,7 +1579,16 @@
                     { src: "assets/img/projects/major-recommendation/major-recom-leaderboard-1.png", title: "Student Leaderboard"  },
                     { src: "assets/img/projects/major-recommendation/major-recom-admin-dashboard.png", title: "Admin Dashboard" },
                     { src: "assets/img/projects/major-recommendation/major-recom-admin-datasiswa.png", title: "Admin Student Data"}
-                ]
+                ],
+                'job-tracker-gallery': [
+                    { src: "assets/img/projects/job-tracker/dashboard.png", title: "Dashboard & Statistik" },
+                    { src: "assets/img/projects/job-tracker/application.png", title: "Application List Page" },
+                    { src: "assets/img/projects/job-tracker/register.png", title: "Register" },
+                    { src: "assets/img/projects/job-tracker/login.png", title: "Login" },
+                    { src: "assets/img/projects/job-tracker/add-application.png", title: "Add/Edit Application Form" },
+                    { src: "assets/img/projects/job-tracker/companies.png", title: "List of Companies" },
+                    { src: "assets/img/projects/job-tracker/profile.png", title: "Profile Settings Page" }
+                ],
             };
             
             // --- MOBILE MENU ---
