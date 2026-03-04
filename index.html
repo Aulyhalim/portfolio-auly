@@ -852,6 +852,7 @@
                 <button class="filter-btn px-6 py-3 glass-dark rounded-xl text-white font-medium transition-all duration-300 hover:bg-primary/20" data-filter="mobile-app">Mobile Apps</button>
                 <button class="filter-btn px-6 py-3 glass-dark rounded-xl text-white font-medium transition-all duration-300 hover:bg-primary/20" data-filter="graphic-design">Graphic Design</button>
                 <button class="filter-btn px-6 py-3 glass-dark rounded-xl text-white font-medium transition-all duration-300 hover:bg-primary/20" data-filter="social-project">Social Projects</button>
+                <button class="filter-btn px-6 py-3 glass-dark rounded-xl text-white font-medium transition-all duration-300 hover:bg-primary/20" data-filter="computer-vision">Computer Vision</button>
             </div>
 
             <div class="project-category" data-category="web-development">
@@ -862,7 +863,11 @@
                         <p class="text-gray-400">Full-stack solutions with modern frameworks</p>
                     </div>
                 </div>
-                <div class="grid lg:grid-cols-2 gap-8">
+
+                
+                <div class="grid lg:grid-cols-2 gap-8 mb-8">
+
+                    <!-- Creative Kitchen -->
                     <div class="project-card enhanced-card">
                         <div class="relative mb-6">
                             <img src="assets/img/projects/creative-kitchen.png" alt="Creative Kitchen Project" class="w-full h-48 object-cover rounded-xl">
@@ -870,11 +875,11 @@
                                 <div class="text-center">
                                     <h4 class="text-xl font-bold text-white mb-2">Creative Kitchen</h4>
                                     <p class="text-white/80 mb-4">AI-powered healthy recipe web application</p>
-                                    <div class="flex justify-center space-x-2">
+                                    <div class="flex justify-center space-x-2 flex-wrap gap-2">
                                         <a href="https://creative-kitchen-indol.vercel.app/" target="_blank" class="btn-primary text-sm px-3 py-2">Live Demo</a>
                                         <a href="https://github.com/Aulyhalim/creative-kitchen-frontend" target="_blank" class="px-3 py-2 glass text-white rounded-lg hover:bg-white/20 inline-flex items-center space-x-2 text-sm"><i class="fab fa-github"></i><span>Frontend</span></a>
                                         <a href="https://github.com/Aulyhalim/creative-kitchen-backend" target="_blank" class="px-3 py-2 glass text-white rounded-lg hover:bg-white/20 inline-flex items-center space-x-2 text-sm"><i class="fab fa-github"></i><span>Backend</span></a>
-                                        <button onclick="openModal(this, 'creative-kitchen')" data-src="assets/img/projects/creative-kitchen/main-creative-kitchen.png" class="px-3 py-2 glass text-white rounded-lg hover:bg-white/20 text-sm"> <i class="far fa-images"></i>  Gallery</button>
+                                        <button onclick="openModal(this, 'creative-kitchen')" data-src="assets/img/projects/creative-kitchen/main-creative-kitchen.png" class="px-3 py-2 glass text-white rounded-lg hover:bg-white/20 text-sm"><i class="far fa-images"></i> Gallery</button>
                                     </div>
                                 </div>
                             </div>
@@ -895,44 +900,8 @@
                             <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-xs">AI Integration</span>
                         </div>
                     </div>
-                    <div class="project-card enhanced-card">
-                        <div class="relative mb-6">
-                            <img src="assets/img/projects/codequest/beranda.png" alt="CodeQuest Project" class="w-full h-48 object-cover rounded-xl">
-                            <div class="project-preview">
-                                <div class="text-center">
-                                    <h4 class="text-xl font-bold text-white mb-2">CodeQuest</h4>
-                                    <p class="text-white/80 mb-4">AI-Powered Interactive Coding Education</p>
-                                    <div class="flex justify-center space-x-2">
-                                        <a href="https://bit.ly/democodequest" target="_blank" class="btn-primary text-sm px-3 py-2">Live Demo</a>
-                                        <a href="https://github.com/Aulyhalim/codequest" target="_blank" class="px-3 py-2 glass text-white rounded-lg hover:bg-white/20 inline-flex items-center space-x-2 text-sm">
-                                            <i class="fab fa-github"></i><span>Github</span>
-                                        </a>
-                                        <button onclick="openModal(this, 'codequest-gallery')" data-src="assets/img/projects/codequest/beranda.jpg" class="px-3 py-2 glass text-white rounded-lg hover:bg-white/20 text-sm"> 
-                                            <i class="far fa-images"></i> Gallery
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="text-xl font-bold text-white mb-3">CodeQuest: Coding Learning Platform</h4>
-                        <p class="text-gray-400 mb-4 text-sm">An interactive educational platform designed to help students master HTML, CSS, and JavaScript. It features an integrated AI tutor and a gamified experience to make learning to code more engaging.</p>
-                        <div class="mb-4">
-                            <h5 class="font-semibold text-white mb-2 text-sm">Key Features:</h5>
-                            <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
-                                <li><strong>AI Assistant (Codi):</strong> A smart tutor powered by AI to answer programming questions and provide instant feedback.</li>
-                                <li><strong>Live Code Editor:</strong> Real-time browser-based environment to execute JavaScript and Python snippets.</li>
-                                <li><strong>Structured Modules:</strong> In-depth lessons on core web technologies with AI-generated explanations.</li>
-                                <li><strong>Gamified Quizzes:</strong> Skill evaluation system with XP and streak rewards to boost student motivation.</li>
-                            </ul>
-                        </div>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs">React.js</span>
-                            <span class="px-3 py-1 bg-yellow-500/10 text-yellow-400 rounded-full text-xs">Tailwind CSS</span>
-                            <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-xs">Gemini AI</span>
-                            <span class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-xs">Node.js</span>
-                        </div>
-                    </div>
 
+                    <!-- Job Tracker -->
                     <div class="project-card enhanced-card">
                         <div class="relative mb-6">
                             <img src="assets/img/projects/job-tracker.png" alt="Job Tracker App Project" class="w-full h-48 object-cover rounded-xl">
@@ -967,42 +936,7 @@
                         </div>
                     </div>
 
-                    <div class="project-card enhanced-card">
-                        <div class="relative mb-6">
-                            <img src="assets/img/projects/major-recommendation.png" alt="Major Recommendation Project" class="w-full h-48 object-cover rounded-xl">
-                            <div class="project-preview">
-                                <div class="text-center">
-                                    <h4 class="text-xl font-bold text-white mb-2">Major Recommendation</h4>
-                                    <p class="text-white/80 mb-4">AI-powered career guidance platform</p>
-                                    <div class="flex justify-center space-x-2">
-                                        <a href="https://bit.ly/RecommendationDemo" target="_blank" class="btn-primary text-sm px-3 py-2 inline-flex items-center space-x-2">
-                                            <span>Live Demo</span>
-                                        </a>
-                                        <button onclick="openModal(this, 'major-recommendation')" data-src="assets/img/projects/major-recommendation/main-major-recommendation.png" class="px-3 py-2 glass text-white rounded-lg hover:bg-white/20 inline-flex items-center space-x-2 text-sm">
-                                            <i class="far fa-images"></i>
-                                            <span>Gallery</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="text-xl font-bold text-white mb-3">Major Recommendation System</h4>
-                        <p class="text-gray-400 mb-4 text-sm">A data-driven career guidance platform that assists students in making informed decisions about their college majors. The system leverages AI to provide personalized and objective recommendations.</p>
-                        <div class="mb-4">
-                            <h5 class="font-semibold text-white mb-2 text-sm">Key Features:</h5>
-                            <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
-                                <li><strong>AI-Powered Recommendations:</strong> Utilizes a machine learning model to suggest majors based on academic scores, interests, and personality traits.</li>
-                                <li><strong>Certificate Analysis (OCR):</strong> Automatically extracts skills and achievements from uploaded certificates to enhance recommendation accuracy.</li>
-                                <li><strong>Comprehensive Admin Dashboard:</strong> Allows administrators (e.g., counselors) to manage student data and oversee the system.</li>
-                            </ul>
-                        </div>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-orange-500/10 text-orange-400 rounded-full text-xs">PHP</span>
-                            <span class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-xs">Python</span>
-                            <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-xs">Machine Learning</span>
-                        </div>
-                    </div>
-
+                    <!-- EchoScribe -->
                     <div class="project-card enhanced-card">
                         <div class="relative mb-6">
                             <img src="assets/img/projects/echoscribe.png" alt="EchoScribe App Project" class="w-full h-48 object-cover rounded-xl">
@@ -1011,7 +945,7 @@
                                     <h4 class="text-xl font-bold text-white mb-2">EchoScribe App</h4>
                                     <p class="text-white/80 mb-4">AI-powered meeting summarizer</p>
                                     <div class="flex justify-center space-x-2">
-                                        <button onclick="openModal(this, 'echoscribe-gallery')" data-src="assets/img/projects/echoscribe/echoscribe-1.png" class="btn-primary text-sm px-3 py-2 inline-flex items-center space-x-2"><i class="far fa-images"></i><span>Gallery</span></button>
+                                        <button onclick="openModal(this, 'echoscribe-gallery')" data-src="assets/img/projects/echoscribe-app/mainpage.png" class="btn-primary text-sm px-3 py-2 inline-flex items-center space-x-2"><i class="far fa-images"></i><span>Gallery</span></button>
                                         <a href="https://github.com/Aulyhalim/echoscribe-app" target="_blank" class="px-3 py-2 glass text-white rounded-lg hover:bg-white/20 inline-flex items-center space-x-2 text-sm"><i class="fab fa-github"></i><span>GitHub</span></a>
                                     </div>
                                 </div>
@@ -1035,6 +969,7 @@
                         </div>
                     </div>
 
+                    <!-- Quality Control AI -->
                     <div class="project-card enhanced-card">
                         <div class="relative mb-6">
                             <img src="assets/img/projects/quality-control.png" alt="Quality Control AI Project" class="w-full h-48 object-cover rounded-xl">
@@ -1043,7 +978,7 @@
                                     <h4 class="text-xl font-bold text-white mb-2">Quality Control AI</h4>
                                     <p class="text-white/80 mb-4">Automated defect detection for manufacturing</p>
                                     <div class="flex justify-center space-x-2">
-                                        <button onclick="openModal(this, 'quality-control-gallery')" data-src="assets/img/projects/quality-control-ai/qc-1.png" class="btn-primary text-sm px-3 py-2 inline-flex items-center space-x-2"><i class="far fa-images"></i><span>Gallery</span></button>
+                                        <button onclick="openModal(this, 'quality-control-gallery')" data-src="assets/img/projects/quality-control-ai/upload_page.png" class="btn-primary text-sm px-3 py-2 inline-flex items-center space-x-2"><i class="far fa-images"></i><span>Gallery</span></button>
                                         <a href="https://github.com/Aulyhalim/quality-control-ai" target="_blank" class="px-3 py-2 glass text-white rounded-lg hover:bg-white/20 inline-flex items-center space-x-2 text-sm"><i class="fab fa-github"></i><span>GitHub</span></a>
                                     </div>
                                 </div>
@@ -1066,6 +1001,185 @@
                             <span class="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs">Scikit-learn</span>
                         </div>
                     </div>
+                </div>
+
+               
+                <div class="flex flex-col gap-8">
+
+                    <!--CodeQuest -->
+                    <div class="project-card enhanced-card">
+                        
+                        <div class="relative rounded-xl overflow-hidden bg-black mb-6">
+                            <div class="relative w-full" style="padding-bottom: 52%;">
+                                <iframe class="absolute inset-0 w-full h-full rounded-xl"
+                                    src="https://drive.google.com/file/d/1Pt2zVKTsfmXF2gQ7diTMRC2Ab8ywHU0y/preview"
+                                    title="CodeQuest Demo Video" frameborder="0" allow="autoplay" allowfullscreen loading="lazy">
+                                </iframe>
+                            </div>
+                            <div class="absolute top-3 left-3 flex items-center space-x-2 z-10">
+                                <span class="px-3 py-1 rounded-full text-xs font-bold text-white flex items-center"
+                                      style="background:rgba(217,119,6,0.85);backdrop-filter:blur(6px);">
+                                    <i class="fas fa-video mr-1"></i> Demo Video
+                                </span>
+                                <button onclick="openModal(this,'codequest-gallery')" data-src="assets/img/projects/codequest/beranda.png"
+                                        class="px-3 py-1 rounded-full text-xs font-bold text-white flex items-center"
+                                        style="background:rgba(30,41,59,0.85);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.15);">
+                                    <i class="far fa-images mr-1"></i> Gallery
+                                </button>
+                            </div>
+                        </div>
+                       
+                        <div class="grid lg:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-3">CodeQuest: Coding Learning Platform</h4>
+                                <p class="text-gray-400 mb-4 text-sm">An interactive educational platform designed to help students master HTML, CSS, and JavaScript. It features an integrated AI tutor and a gamified experience to make learning to code more engaging.</p>
+                                <div>
+                                    <h5 class="font-semibold text-white mb-2 text-sm">Key Features:</h5>
+                                    <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                                        <li><strong>AI Assistant (Codi):</strong> A smart tutor powered by AI to answer programming questions and provide instant feedback.</li>
+                                        <li><strong>Live Code Editor:</strong> Real-time browser-based environment to execute JavaScript and Python snippets.</li>
+                                        <li><strong>Structured Modules:</strong> In-depth lessons on core web technologies with AI-generated explanations.</li>
+                                        <li><strong>Gamified Quizzes:</strong> Skill evaluation system with XP and streak rewards to boost student motivation.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-center">
+                                <h5 class="font-semibold text-white mb-3 text-sm">Tech Stack</h5>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs">React.js</span>
+                                    <span class="px-3 py-1 bg-yellow-500/10 text-yellow-400 rounded-full text-xs">Tailwind CSS</span>
+                                    <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-xs">Gemini AI</span>
+                                    <span class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-xs">Node.js</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Major Recommendation -->
+                    <div class="project-card enhanced-card">
+                        
+                        <div class="relative rounded-xl overflow-hidden bg-black mb-6">
+                            <div class="relative w-full" style="padding-bottom: 52%;">
+                                <iframe class="absolute inset-0 w-full h-full rounded-xl"
+                                    src="https://drive.google.com/file/d/1BVFy7DcvdR_jcPGMCL6knWQQ1XVtY69v/preview"
+                                    title="Major Recommendation Demo Video" frameborder="0" allow="autoplay" allowfullscreen loading="lazy">
+                                </iframe>
+                            </div>
+                            <div class="absolute top-3 left-3 flex items-center space-x-2 z-10">
+                                <span class="px-3 py-1 rounded-full text-xs font-bold text-white flex items-center"
+                                      style="background:rgba(217,119,6,0.85);backdrop-filter:blur(6px);">
+                                    <i class="fas fa-video mr-1"></i> Demo Video
+                                </span>
+                                <button onclick="openModal(this,'major-recommendation')" data-src="assets/img/projects/major-recommendation/main-major-recommendation.png"
+                                        class="px-3 py-1 rounded-full text-xs font-bold text-white flex items-center"
+                                        style="background:rgba(30,41,59,0.85);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.15);">
+                                    <i class="far fa-images mr-1"></i> Gallery
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="grid lg:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-3">Major Recommendation System</h4>
+                                <p class="text-gray-400 mb-4 text-sm">A data-driven career guidance platform that assists students in making informed decisions about their college majors. The system leverages AI to provide personalized and objective recommendations.</p>
+                                <div>
+                                    <h5 class="font-semibold text-white mb-2 text-sm">Key Features:</h5>
+                                    <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                                        <li><strong>AI-Powered Recommendations:</strong> Utilizes a machine learning model to suggest majors based on academic scores, interests, and personality traits.</li>
+                                        <li><strong>Certificate Analysis (OCR):</strong> Automatically extracts skills and achievements from uploaded certificates to enhance recommendation accuracy.</li>
+                                        <li><strong>Comprehensive Admin Dashboard:</strong> Allows administrators (e.g., counselors) to manage student data and oversee the system.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-center">
+                                <h5 class="font-semibold text-white mb-3 text-sm">Tech Stack</h5>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-orange-500/10 text-orange-400 rounded-full text-xs">PHP</span>
+                                    <span class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-xs">Python</span>
+                                    <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-xs">Machine Learning</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FRUIT NINJA -->
+                    <div class="project-card enhanced-card">
+                        
+                        <div class="relative rounded-xl overflow-hidden bg-black mb-6">
+                            <div class="relative w-full" style="padding-bottom: 52%;">
+                                <iframe id="fruit-ninja-video"
+                                    class="absolute inset-0 w-full h-full rounded-xl"
+                                    src="https://drive.google.com/file/d/1H1OpYS5GswaR3o3d5fyu8Eist9z9X8Ni/preview"
+                                    title="Fruit Ninja Hand Slice Edition — Demo Video"
+                                    frameborder="0" allow="autoplay" allowfullscreen loading="lazy">
+                                </iframe>
+                            </div>
+                            <div class="absolute top-3 left-3 flex items-center space-x-2 z-10">
+                                <span class="px-3 py-1 rounded-full text-xs font-bold text-white flex items-center"
+                                      style="background:rgba(217,119,6,0.85);backdrop-filter:blur(6px);">
+                                    <i class="fas fa-video mr-1"></i> Live Demo
+                                </span>
+                                <span class="px-3 py-1 rounded-full text-xs font-bold text-white"
+                                      style="background:rgba(16,185,129,0.8);backdrop-filter:blur(6px);">
+                                    Computer Vision
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="grid lg:grid-cols-2 gap-8">
+                            <div>
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg flex-shrink-0"
+                                         style="background:linear-gradient(135deg,#D97706,#10B981);">🍉</div>
+                                    <h4 class="text-xl font-bold text-white">Fruit Ninja — Hand Slice Edition</h4>
+                                </div>
+                                <p class="text-gray-400 mb-4 text-sm leading-relaxed">An interactive remake of the classic Fruit Ninja game controlled entirely by webcam hand gestures. Built in Python at 60 FPS, supporting two simultaneous players tracked independently via MediaPipe.</p>
+                                <div>
+                                    <h5 class="font-semibold text-white mb-2 text-sm">Key Features:</h5>
+                                    <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                                        <li><strong>Real-Time Hand Gesture Detection:</strong> MediaPipe tracks 21 landmarks; slicing triggered by index + middle fingers at speed threshold.</li>
+                                        <li><strong>2-Player Simultaneous Mode:</strong> Left & right hands mapped independently — own score, lives, combo & trail.</li>
+                                        <li><strong>Dynamic PowerUp System:</strong> Freeze (slow-motion), Frenzy (2× points), Shield (+1 life).</li>
+                                        <li><strong>Procedural Audio Engine:</strong> All SFX & BGM generated via NumPy — zero external audio files.</li>
+                                        <li><strong>PostgreSQL Leaderboard:</strong> Session data persisted; auto-fallback offline if DB unavailable.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-between">
+                                <div>
+                                    <h5 class="font-semibold text-white mb-3 text-sm">Tech Stack</h5>
+                                    <div class="flex flex-wrap gap-2 mb-6">
+                                        <span class="px-3 py-1 bg-yellow-500/10 text-yellow-400 rounded-full text-xs">Python 3</span>
+                                        <span class="px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-xs">OpenCV</span>
+                                        <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full text-xs">MediaPipe</span>
+                                        <span class="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs">Pygame</span>
+                                        <span class="px-3 py-1 bg-amber-500/10 text-amber-400 rounded-full text-xs">NumPy</span>
+                                        <span class="px-3 py-1 bg-cyan-500/10 text-cyan-400 rounded-full text-xs">PostgreSQL</span>
+                                    </div>
+                                    <div class="grid grid-cols-3 gap-3 mb-6">
+                                        <div class="text-center p-3 rounded-xl" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);">
+                                            <div class="text-2xl font-black text-primary">60</div>
+                                            <div class="text-xs text-gray-500 mt-1">FPS</div>
+                                        </div>
+                                        <div class="text-center p-3 rounded-xl" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);">
+                                            <div class="text-2xl font-black text-accent">2P</div>
+                                            <div class="text-xs text-gray-500 mt-1">Players</div>
+                                        </div>
+                                        <div class="text-center p-3 rounded-xl" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);">
+                                            <div class="text-2xl font-black" style="color:#a78bfa;">9</div>
+                                            <div class="text-xs text-gray-500 mt-1">Modules</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1H1OpYS5GswaR3o3d5fyu8Eist9z9X8Ni/view?usp=sharing" target="_blank"
+                                   class="btn-primary text-sm px-4 py-2 inline-flex items-center space-x-2 w-fit">
+                                    <i class="fab fa-google-drive mr-1"></i><span>Watch Full Demo</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                  
+
                 </div>
             </div>
             
@@ -1464,7 +1578,7 @@
                                 <div class="w-12 h-12 glass rounded-2xl flex items-center justify-center flex-shrink-0 mt-1"><i class="fas fa-envelope text-primary text-xl"></i></div>
                                 <div>
                                     <h4 class="font-bold text-white mb-1">Email Address</h4>
-                                    <p class="text-gray-300 mb-1">nurulauliahalim20@gmail.com</p>
+                                    <p class="text-gray-300 mb-1"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b4dac1c6c1d8d5c1d8ddd5dcd5d8ddd98684f4d3d9d5ddd89ad7dbd9">[email&#160;protected]</a></p>
                                     <p class="text-sm text-gray-400">I'll respond within 24 hours</p>
                                 </div>
                             </div>
@@ -1492,7 +1606,7 @@
                         <div class="flex space-x-4">
                             <a href="https://linkedin.com/in/aulyh" target="_blank" class="tooltip w-12 h-12 bg-gradient-to-br from-primary to-yellow-400 text-white rounded-2xl flex items-center justify-center hover:scale-110 transition-all duration-300" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in text-xl"></i></a>
                             <a href="https://github.com/Aulyhalim" target="_blank" class="tooltip w-12 h-12 glass text-white rounded-2xl flex items-center justify-center hover:scale-110 transition-all duration-300" data-tooltip="GitHub"><i class="fab fa-github text-xl"></i></a>
-                            <a href="mailto:nurulauliahalim20@gmail.com" class="tooltip w-12 h-12 bg-gradient-to-br from-accent to-green-600 text-white rounded-2xl flex items-center justify-center hover:scale-110 transition-all duration-300" data-tooltip="Email"><i class="fas fa-envelope text-xl"></i></a>
+                            <a href="/cdn-cgi/l/email-protection#87e9f2f5f2ebe6f2ebeee6efe6ebeeeab5b7c7e0eae6eeeba9e4e8ea" class="tooltip w-12 h-12 bg-gradient-to-br from-accent to-green-600 text-white rounded-2xl flex items-center justify-center hover:scale-110 transition-all duration-300" data-tooltip="Email"><i class="fas fa-envelope text-xl"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1599,7 +1713,7 @@
         </div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         document.addEventListener('DOMContentLoaded', function () {
             // --- PROJECT GALLERY DATA ---
              const projectGalleries = {
@@ -1732,7 +1846,7 @@
                 });
             });
 
-            // --- SCROLL-BASED ANIMATIONS & NAV HIGHLIGHTING ---
+          
             const backToTopBtn = document.getElementById('back-to-top');
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.nav-link');
@@ -1770,7 +1884,7 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
             
-            // --- INTERSECTION OBSERVER FOR ANIMATIONS ---
+           
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1921,14 +2035,14 @@
                 .then(async (response) => {
                     let jsonResponse = await response.json();
                     if (response.status == 200) {
-                        // 2. Gunakan Toast untuk notifikasi sukses
+                        
                         Toast.fire({
                             icon: 'success',
                             title: 'Message sent successfully!'
                         });
                     } else {
                         console.log(response);
-                        // 3. Gunakan Toast untuk notifikasi error
+                        
                         Toast.fire({
                             icon: 'error',
                             title: 'Oops! Something went wrong.'
@@ -1974,11 +2088,11 @@
                     } else if (isDeleting && charIndex === 0) {
                         isDeleting = false;
                         roleIndex = (roleIndex + 1) % roles.length;
-                        typeSpeed = 500;
                     }
+
                     setTimeout(typeRole, typeSpeed);
                 }
-                setTimeout(typeRole, 1000);
+                typeRole();
             }
         });
     </script>
